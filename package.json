@@ -1,0 +1,46 @@
+{
+  "name": "react-nim",
+  "version": "0.0.0",
+  "description": "Nim React",
+  "author": "Okta, Inc.",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "classnames": "2.x",
+    "prop-types": "15.x"
+  },
+  "devDependencies": {
+    "@babel/core": "7.x",
+    "@babel/preset-env": "7.x",
+    "@babel/preset-react": "7.x",
+    "babel-eslint": "10.x",
+    "babel-loader": "8.x",
+    "babel-plugin-transform-class-properties": "6.x",
+    "clean-webpack-plugin": "1.x",
+    "eslint": "4.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-protractor": "1.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
+    "uglifyjs-webpack-plugin": "1.x",
+    "webpack": "4.x",
+    "webpack-bundle-analyzer": "3.x",
+    "webpack-cli": "3.x",
+    "webpack-manifest-plugin": "2.x"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oktadeveloper/react-nim"
+  },
+  "scripts": {
+    "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors --bail",
+    "lint": "eslint --ext=.js,.jsx src",
+    "test": "yarn run lint"
+  },
+  "main": "./dist/main.js",
+  "module": "./dist/main.js"
+}

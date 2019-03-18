@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { isMobilish } from './util';
 
 export const FormTitle = ({ children }) => <header className="form--header">
   <h1 className="form--title">{ children }</h1>
@@ -53,12 +54,18 @@ CheckBox.propTypes = {
 /* TextInput component - React counterpart to o-text-input. Uses FieldSet component above.
  * This pattern could be used by other components for checkboxes, selects, etc.
  */
-export const TextInput = React.forwardRef(({ id, label, aside, error, required = true, className='text-input', ...otherProps }, ref) => <FieldSet htmlFor={id} label={label} aside={aside} error={error}>
-  { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
-     * Nim also adds an "optional" text next to non-required inputs, so default to required.
-     */}
-  <input id={id} type="text" className={className} data-invalid={error ? true : undefined} ref={ref} required={required} {...otherProps} />
-</FieldSet>);
+export const TextInput = React.forwardRef(({ id, label, aside, error, required = true, className='text-input', autoFocus, ...otherProps }, ref) => {
+  if (isMobilish()) {
+    // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
+    autoFocus = false;
+  }
+  return <FieldSet htmlFor={id} label={label} aside={aside} error={error}>
+    { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
+       * Nim also adds an "optional" text next to non-required inputs, so default to required.
+       */}
+    <input id={id} type="text" className={className} data-invalid={error ? true : undefined} ref={ref} required={required} autoFocus={autoFocus} {...otherProps} />
+  </FieldSet>;
+});
 TextInput.displayName = 'TextInput';
 TextInput.propTypes = {
   className: PropTypes.string,

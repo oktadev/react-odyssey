@@ -9,6 +9,12 @@
      "plugin:import/warnings",
      "plugin:react/recommended",
   ],
+  "globals": {
+    "console": true,
+    "document": true,
+    "navigator": true,
+    "window": true
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "comment": true,

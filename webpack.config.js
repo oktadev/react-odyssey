@@ -50,6 +50,9 @@ const webpackConfig = {
           loader: 'babel-loader',
         }],
       },
+      { test: /\.svg$/,
+        use: ['url-loader'],
+      },
     ]
   },
   optimization: {

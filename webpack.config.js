@@ -26,7 +26,7 @@ const webpackConfig = {
   mode: env,
   entry: {
     main: [
-      './src/index.js'
+      './src/index.ts'
     ]
   },
   externals: {

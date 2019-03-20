@@ -4,7 +4,7 @@
     "node": true,
   },
   "extends": [
-     "eslint:recommended",
+     "plugin:@typescript-eslint/recommended",
      "plugin:import/errors",
      "plugin:import/warnings",
      "plugin:react/recommended",
@@ -15,9 +15,11 @@
     "navigator": true,
     "window": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "comment": true,
+    "useJSXTextNode": true,
+    "warnOnUnsupportedTypeScriptVersion": false,
     "ecmaFeatures": {
       "jsx": true,
       "modules": true,
@@ -29,6 +31,7 @@
   "plugins": [
     "react",
     "react-hooks",
+    "@typescript-eslint",
   ],
   "settings": {
     "import/extensions": [".js", ".jsx"],
@@ -44,6 +47,8 @@
     "default-case": 0,
     "dot-notation": "warn",
     "eqeqeq": ["error", "always"],
+    "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
+    "@typescript-eslint/prefer-interface": 0,
     "indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
     "jsx-quotes": "error",
     "keyword-spacing": "error",

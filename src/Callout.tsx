@@ -18,14 +18,14 @@ const SVGs: SVGs_ = {
 };
 
 export type CalloutProps = {
-  children: React.ReactNode,
-  className?: string,
-  kind: Callouts,
-  style?: React.CSSProperties,
-  title: React.ReactNode,
+  children: React.ReactNode;
+  className?: string;
+  kind: Callouts;
+  style?: React.CSSProperties;
+  title: React.ReactNode;
 };
 
-export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }) => <aside
+export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }): JSX.Element => <aside
   className={`callout is-callout-${kind === 'info' ? 'help' : kind } ${className}`}
   aria-live={ kind !== 'error' ? "polite" : undefined}
   role={ kind === 'error' ? 'alert' : undefined}
@@ -43,7 +43,7 @@ export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children
 Callout.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  kind: PropTypes.oneOf(Object.keys(SVGs) as Array<Callouts>),
+  kind: PropTypes.oneOf(Object.keys(SVGs) as Callouts[]),
   style: PropTypes.object,
   title: PropTypes.node,
 };

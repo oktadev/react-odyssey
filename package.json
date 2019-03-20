@@ -7,6 +7,8 @@
   "dependencies": {
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
     "awesome-typescript-loader": "^5.2.1",
     "classnames": "2.x",
     "prop-types": "15.x",
@@ -21,7 +23,7 @@
     "babel-loader": "8.x",
     "babel-plugin-transform-class-properties": "6.x",
     "clean-webpack-plugin": "1.x",
-    "eslint": "4.x",
+    "eslint": "5.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-protractor": "1.x",
     "eslint-plugin-react": "7.x",
@@ -46,7 +48,7 @@
   "scripts": {
     "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors --bail",
-    "lint": "eslint --ext=.js,.jsx src",
+    "lint": "eslint --ext=.js,.jsx,.ts,.tsx src",
     "test": "yarn run lint"
   },
   "main": "./dist/main.js",

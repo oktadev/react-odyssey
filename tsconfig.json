@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "jsx": "react",
+    "module": "es2018",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "target": "es2018",
+  },
+  "lib": ["es2018"],
+  "include": [
+    "./src",
+  ],
+  "exclude": [
+    "dist/",
+    "node_modules/",
+  ],
+}

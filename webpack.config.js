@@ -44,29 +44,18 @@ const webpackConfig = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', {
-          loader: 'babel-loader',
-        }],
-      },
-      { test: /\.svg$/,
-        use: ['url-loader'],
-      },
+      { test: /\.ts|\.tsx$/, loader: ['babel-loader', 'awesome-typescript-loader'], include: __dirname },
+      { test: /\.js|\.jsx$/, loader: 'babel-loader', include: __dirname },
+      { test: /\.svg$/, use: ['url-loader'] },
     ]
   },
   optimization: {
-    splitChunks: {
-      // include all types of chunks
-      chunks: 'all',
-      automaticNameDelimiter: '.' // Google Cloud Storage doesn't like it when ~ is in the filename.
-    },
-    runtimeChunk: false,
+    minimize: false,
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   plugins: []
 };
 
@@ -74,12 +63,11 @@ const plugins = [
   new CleanPlugin([
     `${buildDir}/*`,
   ]),
-  new webpack.NamedModulesPlugin(),
+  new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
+  new ManifestPlugin(),
 ];
 
 if (env === "production") {
-  plugins.push(new ManifestPlugin());
-
   webpackConfig.optimization.minimizer = [
     new UglifyJsPlugin({
       cache: true,

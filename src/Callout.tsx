@@ -6,14 +6,26 @@ import infoSVG from '../img/callout-info.svg';
 import pendingSVG from '../img/callout-pending.svg';
 import warningSVG from '../img/callout-warning.svg';
 
-const SVGs = {
+export type Callouts = "pending" | "info" | "warning" | "error";
+
+type SVGs_ = { [K in Callouts]: string };
+
+const SVGs: SVGs_ = {
   pending: pendingSVG,
   info: infoSVG,
   warning: warningSVG,
   error: errorSVG,
 };
 
-export const Callout = ({ title, kind, children, style, className="mt-4" }) => <aside
+export type CalloutProps = {
+  children: React.ReactNode;
+  className?: string;
+  kind: Callouts;
+  style?: React.CSSProperties;
+  title: React.ReactNode;
+};
+
+export const Callout: React.FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }): JSX.Element => <aside
   className={`callout is-callout-${kind === 'info' ? 'help' : kind } ${className}`}
   aria-live={ kind !== 'error' ? "polite" : undefined}
   role={ kind === 'error' ? 'alert' : undefined}
@@ -31,7 +43,7 @@ export const Callout = ({ title, kind, children, style, className="mt-4" }) => <
 Callout.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  kind: PropTypes.oneOf(Object.keys(SVGs)),
+  kind: PropTypes.oneOf(Object.keys(SVGs) as Callouts[]),
   style: PropTypes.object,
   title: PropTypes.node,
 };

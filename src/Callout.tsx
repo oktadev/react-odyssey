@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import errorSVG from '../img/callout-error.svg';
@@ -25,7 +25,7 @@ export type CalloutProps = {
   title: React.ReactNode;
 };
 
-export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }): JSX.Element => <aside
+export const Callout: React.FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }): JSX.Element => <aside
   className={`callout is-callout-${kind === 'info' ? 'help' : kind } ${className}`}
   aria-live={ kind !== 'error' ? "polite" : undefined}
   role={ kind === 'error' ? 'alert' : undefined}

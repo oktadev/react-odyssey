@@ -12,7 +12,6 @@
     "awesome-typescript-loader": "^5.2.1",
     "classnames": "2.x",
     "prop-types": "15.x",
-    "source-map-loader": "^0.2.4",
     "typescript": "^3.4.0-rc"
   },
   "devDependencies": {
@@ -49,7 +48,8 @@
     "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors --bail",
     "lint": "eslint --ext=.js,.jsx,.ts,.tsx src",
-    "test": "yarn run lint"
+    "test": "yarn run lint",
+    "watch": "NODE_ENV=development webpack --config webpack.config.js --progress --colors --watch"
   },
   "main": "./dist/main.js",
   "module": "./dist/main.js"

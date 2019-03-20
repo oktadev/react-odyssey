@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "incremental": true,
+    "jsx": "react",
+    "module": "es2018",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "umd",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "target": "es2018",
   },
   "lib": ["es2018"],
   "include": [
     "./src",
-    // "./img"
   ],
   "exclude": [
-    "public/dist"
+    "dist/",
+    "node_modules/",
   ],
 }

@@ -44,15 +44,9 @@ const webpackConfig = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', {
-          loader: 'babel-loader',
-        }],
-      },
-      { test: /\.svg$/,
-        use: ['url-loader'],
-      },
+      { test: /\.ts|\.tsx|\.js|\.jsx$/, loader: ['babel-loader', 'awesome-typescript-loader'], include: __dirname },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      { test: /\.svg$/, use: ['url-loader'] },
     ]
   },
   optimization: {
@@ -64,7 +58,7 @@ const webpackConfig = {
     runtimeChunk: false,
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: [".ts", ".tsx", '.js', '.jsx']
   },
   devtool: 'cheap-module-source-map',
   plugins: []

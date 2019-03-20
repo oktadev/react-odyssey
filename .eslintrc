@@ -32,7 +32,7 @@
   ],
   "settings": {
     "import/extensions": [".js", ".jsx"],
-    "import/resolver": {"node": {"extensions": [".js", ".jsx"]}},
+    "import/resolver": {"node": {"extensions": [".js", ".jsx", ".tsx"]}},
     "react": {
       "version": "16.8",
     },

@@ -25,15 +25,12 @@ const reactDOMExternal = {
 const webpackConfig = {
   mode: env,
   entry: {
-    main: [
-      './src/index.ts'
-    ]
+    main: './src/index.ts',
   },
   externals: {
     'react': reactExternal,
     'react-dom': reactDOMExternal
   },
-
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',

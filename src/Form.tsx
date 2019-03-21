@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, ReactNode, TextareaHTMLAttributes, InputHTMLAttributes } from 'react';
+import React, { forwardRef, FunctionComponent, ReactNode, TextareaHTMLAttributes, InputHTMLAttributes, RefForwardingComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -49,7 +49,7 @@ export interface InputProps extends InputPropsNoRef {
 }
 
 // TODO (ggreer): this is very similar to FieldSet. Figure out how to fix Nim and/or Fieldset to reduce the repetitive code.
-export const CheckBox: React.ComponentType<InputProps> = forwardRef<HTMLInputElement, InputPropsNoRef>(({ id, label, aside, error, ...otherProps }, ref) => <fieldset className="fieldset">
+export const CheckBox: RefForwardingComponent<HTMLInputElement, InputProps> = forwardRef<HTMLInputElement, InputProps>(({ id, label, aside, error, ...otherProps }, ref) => <fieldset className="fieldset">
   <div className={classNames('fieldset-flex', { error })}>
     <label htmlFor={id}>
       <input type="checkbox" id={id} ref={ref} {...otherProps} />
@@ -70,7 +70,10 @@ CheckBox.propTypes = {
   required: PropTypes.bool,
 };
 
-export const TextInput: React.ComponentType<InputProps> = forwardRef<HTMLInputElement, InputPropsNoRef>(({ id, label, aside, error, required = true, className='text-input', autoFocus, ...otherProps }, ref) => {
+/* TextInput component - React counterpart to o-text-input. Uses FieldSet component above.
+ * This pattern could be used by other components for checkboxes, selects, etc.
+ */
+export const TextInput: RefForwardingComponent<HTMLInputElement, InputProps> = forwardRef<HTMLInputElement, InputProps>(({ id, label, aside, error, required = true, className='text-input', autoFocus, ...otherProps }, ref) => {
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
@@ -90,8 +93,7 @@ TextInput.propTypes = {
 };
 TextInput.displayName = 'TextInput';
 
-
-export const PasswordInput: React.ComponentType<InputProps> = forwardRef<HTMLInputElement, InputPropsNoRef>(({ id, label, aside, error, required = true, className='text-input', ...otherProps }, ref) =>
+export const PasswordInput: RefForwardingComponent<HTMLInputElement, InputProps> = forwardRef<HTMLInputElement, InputProps>(({ id, label, aside, error, required = true, className='text-input', ...otherProps }, ref) =>
   <FieldSet htmlFor={id} label={label} aside={aside} error={error}>
     { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
        * Nim also adds an "optional" text next to non-required inputs, so default to required.
@@ -116,7 +118,7 @@ interface TextAreaPropsNoRef extends TextareaHTMLAttributes<HTMLTextAreaElement>
 export interface TextAreaProps extends TextAreaPropsNoRef {
   ref?: React.RefObject<HTMLTextAreaElement>;
 }
-export const TextArea: React.ComponentType<TextAreaProps> = forwardRef<HTMLTextAreaElement, TextAreaPropsNoRef>(({ id, label, aside, error, required = true, className='text-input', ...otherProps }, ref) =>
+export const TextArea: RefForwardingComponent<HTMLTextAreaElement, TextAreaProps> = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ id, label, aside, error, required = true, className='text-input', ...otherProps }, ref) =>
   <FieldSet htmlFor={id} label={label} aside={aside} error={error}>
     { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
        * Nim also adds an "optional" text next to non-required inputs, so default to required.

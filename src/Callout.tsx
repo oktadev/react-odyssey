@@ -22,7 +22,7 @@ export type CalloutProps = {
   className?: string;
   kind: Callouts;
   style?: React.CSSProperties;
-  title: React.ReactNode;
+  title?: React.ReactNode;
 };
 
 export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }) => <aside

@@ -50,6 +50,7 @@
     "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
     "@typescript-eslint/prefer-interface": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
     "indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
     "jsx-quotes": "error",
     "keyword-spacing": "error",

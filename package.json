@@ -12,8 +12,10 @@
     "@typescript-eslint/parser": "^1.4.2",
     "awesome-typescript-loader": "^5.2.1",
     "classnames": "2.x",
+    "file-loader": "^3.0.1",
     "prop-types": "15.x",
-    "typescript": "^3.4.0-rc"
+    "typescript": "^3.4.0-rc",
+    "webpack-dev-server": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.x",
@@ -50,7 +52,8 @@
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors --bail",
     "lint": "eslint --ext=.js,.jsx,.ts,.tsx src",
     "test": "yarn run lint",
-    "watch": "NODE_ENV=development webpack --config webpack.config.js --progress --colors --watch"
+    "watch": "NODE_ENV=development webpack --config webpack.config.js --progress --colors --watch",
+    "demo": "webpack-dev-server --config webpack.config.demo.js --progress --colors --watch"
   },
   "main": "./dist/main.js",
   "module": "./dist/main.js"

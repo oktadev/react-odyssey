@@ -45,7 +45,7 @@ const webpackConfig = {
   module: {
     rules: [
       { test: /\.ts|\.tsx$/, loader: ['babel-loader', 'awesome-typescript-loader'], include: __dirname },
-      { test: /\.js|\.jsx$/, loader: 'babel-loader', include: __dirname },
+      // { test: /\.js|\.jsx$/, loader: 'babel-loader', include: __dirname },
       { test: /\.svg$/, use: ['url-loader'] },
     ]
   },

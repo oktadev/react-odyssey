@@ -35,7 +35,7 @@
   ],
   "settings": {
     "import/extensions": [".js", ".jsx"],
-    "import/resolver": {"node": {"extensions": [".js", ".jsx", ".tsx"]}},
+    "import/resolver": {"node": {"extensions": [".js", ".jsx", ".tsx", ".ts"]}},
     "react": {
       "version": "16.8",
     },
@@ -49,6 +49,7 @@
     "eqeqeq": ["error", "always"],
     "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
     "@typescript-eslint/prefer-interface": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
     "indent": ["error", 2, {"SwitchCase": 1, "VariableDeclarator": 1}],
     "jsx-quotes": "error",
     "keyword-spacing": "error",

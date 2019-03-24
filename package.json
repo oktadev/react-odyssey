@@ -5,6 +5,7 @@
   "author": "Okta, Inc.",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@typescript-eslint/eslint-plugin": "^1.4.2",

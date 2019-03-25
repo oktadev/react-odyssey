@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 export type ModalType = 'primary' | 'secondary' | 'danger';
 
-type CloseEvent = MouseEvent | KeyboardEvent | React.SyntheticEvent<HTMLButtonElement>;
+type ModalEvent = MouseEvent | KeyboardEvent | React.SyntheticEvent<HTMLButtonElement>;
 
 export type ModalProps = {
   cancellable?: boolean;
@@ -44,14 +44,14 @@ export class Modal extends React.Component<ModalProps, { showModal: boolean }> {
     };
   }
 
-  public open (ev: React.FormEvent<HTMLInputElement>) {
+  public open (ev: ModalEvent) {
     if (ev) {
       ev.preventDefault();
     }
     this.setState({ showModal: true });
   }
 
-  public close (ev: CloseEvent) {
+  public close (ev: ModalEvent) {
     if (ev) {
       ev.preventDefault();
     }
@@ -70,7 +70,7 @@ export class Modal extends React.Component<ModalProps, { showModal: boolean }> {
 
   public render () {
     const { cancellable, children, disabled, submitBtnTxt, title, type } = this.props;
-    const close = (e: CloseEvent) => this.close(e);
+    const close = (e: ModalEvent) => this.close(e);
     return <ReactModal
       isOpen={this.state.showModal}
       onRequestClose={close}

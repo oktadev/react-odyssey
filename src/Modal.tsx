@@ -44,14 +44,14 @@ export class Modal extends React.Component<ModalProps, { showModal: boolean }> {
     };
   }
 
-  public open (ev: ModalEvent) {
+  public open (ev?: ModalEvent) {
     if (ev) {
       ev.preventDefault();
     }
     this.setState({ showModal: true });
   }
 
-  public close (ev: ModalEvent) {
+  public close (ev?: ModalEvent) {
     if (ev) {
       ev.preventDefault();
     }

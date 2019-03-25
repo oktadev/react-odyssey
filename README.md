@@ -6,8 +6,6 @@ React components for Nim design framework.
 
 
 ## TODO
-- Modals
-- More TypeScript
 - Examples?
 - Docs?
 

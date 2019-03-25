@@ -8,11 +8,13 @@
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
+    "@types/react-modal": "^3.8.1",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "awesome-typescript-loader": "^5.2.1",
     "classnames": "2.x",
     "prop-types": "15.x",
+    "react-modal": "3.x",
     "typescript": "^3.4.0-rc"
   },
   "devDependencies": {

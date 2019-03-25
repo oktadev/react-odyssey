@@ -25,8 +25,8 @@ module.exports = {
   mode: env,
   entry: {
     // main: './src/index.ts',
-    demo: './src/demo.tsx',
-    html: './src/index.html',
+    demo: './demo/demo.tsx',
+    html: './demo/index.html',
   },
   // externals: {
   //   'react': reactExternal,

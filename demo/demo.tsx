@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { Callout, Callouts }  from './Callout';
-import { FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter } from './Form';
+import { Callout, Callouts }  from '../src';
+import { FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter } from '../src';
 
 const CalloutDemo = () => <React.Fragment>
   {["pending", "info", "warning", "error"].map(t =>

@@ -22,7 +22,7 @@ export type CalloutProps = {
   className?: string;
   kind: Callouts;
   style?: React.CSSProperties;
-  title: React.ReactNode;
+  title?: React.ReactNode;
 };
 
 export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children, style, className="mt-4" }) => <aside
@@ -31,7 +31,7 @@ export const Callout: FunctionComponent<CalloutProps> = ({ title, kind, children
   role={ kind === 'error' ? 'alert' : undefined}
   style={style}
 >
-  <img alt={kind} className="mr-2" src={ SVGs[kind] } style={{ height: 24, width: 24 }} />
+  <img alt={kind} src={ SVGs[kind] } style={{ height: 24, width: 24, marginRight: 8 }} />
   <div className="callout--content">
     { title && <h1 className="callout--title">
       { title }

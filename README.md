@@ -6,7 +6,6 @@ React components for Nim design framework.
 
 
 ## TODO
-- Examples?
 - Docs?
 
 

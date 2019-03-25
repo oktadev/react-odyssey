@@ -21,7 +21,7 @@ class FormDemo extends React.Component {
   private ref3 = React.createRef<HTMLInputElement>();
   private ref4 = React.createRef<HTMLTextAreaElement>();
 
-  render () {
+  public render () {
     return <React.Fragment>
       <form className="form">
         <FormTitle>Title</FormTitle>

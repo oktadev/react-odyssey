@@ -53,10 +53,10 @@ class ModalDemo extends React.Component<{}, { submitted: boolean }> {
     super(props);
     this.state = {
       submitted: false,
-    }
+    };
   }
 
-  private submit (e: any) {
+  private submit (e: MouseEvent) {
     this.setState({ submitted: true });
     this.modalRef.current.close(e);
   }

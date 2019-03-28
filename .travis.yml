@@ -5,3 +5,4 @@ node_js:
 sudo: false
 before_script:
   - yarn build
+  - yarn build-demo

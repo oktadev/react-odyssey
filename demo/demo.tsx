@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 
 import { Callout, Callouts,
   FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
-  Modal } from '../src';
+  Modal, Select } from '../src';
 
 const CalloutDemo = () => <React.Fragment>
   {["pending", "info", "warning", "error"].map(t =>
@@ -21,6 +21,7 @@ class FormDemo extends React.Component {
   private ref2 = React.createRef<HTMLInputElement>();
   private ref3 = React.createRef<HTMLInputElement>();
   private ref4 = React.createRef<HTMLTextAreaElement>();
+  private ref5 = React.createRef<HTMLSelectElement>();
 
   public render () {
     return <form className="form">
@@ -33,6 +34,10 @@ class FormDemo extends React.Component {
       <PasswordInput label="Password Input" ref={this.ref2} />
       <CheckBox label="Check Box" ref={this.ref3} />
       <TextArea label="Text Area" ref={this.ref4} />
+      <Select label="Select me" ref={this.ref5} aside="This is a select thingy.">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </Select>
       <FormActions>
         <button className="button is-button-primary" type="button">Button</button>
         <button className="button is-button-secondary" type="button">Other Button</button>

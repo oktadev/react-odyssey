@@ -52,6 +52,7 @@
   "scripts": {
     "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors --bail",
+    "build-demo": "NODE_ENV=production webpack --config webpack.config.demo.js --progress --colors --bail",
     "lint": "eslint --ext=.js,.jsx,.ts,.tsx src demo",
     "test": "yarn run lint",
     "watch": "NODE_ENV=development webpack --config webpack.config.js --progress --colors --watch",

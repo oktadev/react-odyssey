@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, ReactNode, TextareaHTMLAttributes, InputHTMLAttributes, RefForwardingComponent } from 'react';
+import React, { forwardRef, FunctionComponent, ReactNode, TextareaHTMLAttributes, InputHTMLAttributes, SelectHTMLAttributes, RefForwardingComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -100,6 +100,31 @@ export const PasswordInput: React.ComponentType<InputProps> = forwardRef<HTMLInp
 );
 PasswordInput.displayName = 'PasswordInput';
 PasswordInput.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string,
+  required: PropTypes.bool,
+};
+
+
+interface SelectPropsNoRef extends SelectHTMLAttributes<HTMLSelectElement> {
+  label: ReactNode;
+  aside?: ReactNode;
+  error?: ReactNode;
+};
+
+export interface SelectProps extends SelectPropsNoRef {
+  ref?: React.RefObject<HTMLSelectElement>;
+}
+
+export const Select: React.ComponentType<SelectProps> = forwardRef<HTMLSelectElement, SelectPropsNoRef>(({ id, label, aside, error, children, required=true, className='select-input', ...otherProps }, ref) => <FieldSet htmlFor={id} label={label} aside={aside} error={error}>
+  <select className={className} id={id} required={required} ref={ref} {...otherProps}>
+    { children }
+  </select>
+</FieldSet>
+);
+Select.displayName = 'Select';
+Select.propTypes = {
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   id: PropTypes.string,
   required: PropTypes.bool,

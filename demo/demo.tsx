@@ -1,9 +1,15 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { Callout, Callouts,
+import { Button, Callout, Callouts,
   FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
   Modal, Select } from '../src';
+
+const ButtonDemo = () => <>
+  <Button variant="primary">Primary Button</Button>
+  <Button variant="secondary">Secondary Button</Button>
+  <Button variant="danger">Danger Button</Button>
+</>;
 
 const CalloutDemo = () => <React.Fragment>
   {["pending", "info", "warning", "error"].map(t =>
@@ -87,6 +93,10 @@ const Spacer = () => <div style={{ height: 50 }} />;
 
 const App = () => <div style={{ maxWidth: 1248, margin: 'auto', padding: 20 }}>
   <h1>React Nim Hot Loaded Demo</h1>
+
+  <h2 id="button">Button</h2>
+  <ButtonDemo />
+  <Spacer />
 
   <h2 id="callout">Callout</h2>
   <CalloutDemo />

@@ -7,12 +7,21 @@ export type ButtonVariants = 'primary' | 'secondary' | 'danger';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
-  variant?: ButtonVariants;
+  isPrimary?: boolean;
+  isDanger?: boolean;
 };
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, className, variant='primary', ...rest }) => <button className={classNames('button', `is-button-${variant}`, className)} type="button" {...rest}>{children}</button>;
+export const Button: FunctionComponent<ButtonProps> = ({ children, className, isPrimary=true, isDanger, ...rest }) => {
+  const classes = classNames('button', {
+    'is-button-primary': isPrimary,
+    'is-button-secondary': !isPrimary,
+    'is-button-danger': isDanger,
+  }, className);
+  return <button className={classes} type="button" {...rest}>{children}</button>;
+};
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
+  isPrimary: PropTypes.bool,
+  isDanger: PropTypes.bool,
 };

@@ -6,9 +6,10 @@ import { Button, Callout, Callouts,
   Modal, Select } from '../src';
 
 const ButtonDemo = () => <>
-  <Button variant="primary">Primary Button</Button>
-  <Button variant="secondary">Secondary Button</Button>
-  <Button variant="danger">Danger Button</Button>
+  <Button>Primary!</Button>
+  <Button isPrimary={false}>Secondary!</Button>
+  <Button isDanger>Danger!</Button>
+  <Button isDanger isPrimary={false}>Secondary Danger!</Button>
 </>;
 
 const CalloutDemo = () => <React.Fragment>

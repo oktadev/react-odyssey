@@ -1,27 +1,30 @@
-import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes } from 'react';
+import React, { forwardRef, ReactNode, RefForwardingComponent, ButtonHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export type ButtonVariants = 'primary' | 'secondary' | 'danger';
-
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonPropsNoRef extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
-  isPrimary?: boolean;
+  isSecondary?: boolean;
   isDanger?: boolean;
 };
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, className, isPrimary=true, isDanger, ...rest }) => {
+export interface ButtonProps extends ButtonPropsNoRef {
+  ref?: React.RefObject<HTMLButtonElement>;
+}
+
+export const Button: RefForwardingComponent<HTMLButtonElement, ButtonProps> = forwardRef<HTMLButtonElement, ButtonPropsNoRef>(({ children, className, isSecondary, isDanger, ...rest }, ref) => {
   const classes = classNames('button', {
-    'is-button-primary': isPrimary,
-    'is-button-secondary': !isPrimary,
+    'is-button-primary': !isSecondary,
+    'is-button-secondary': isSecondary,
     'is-button-danger': isDanger,
   }, className);
-  return <button className={classes} type="button" {...rest}>{children}</button>;
-};
+  return <button ref={ref} className={classes} type="button" {...rest}>{children}</button>;
+});
+Button.displayName = 'Button';
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  isPrimary: PropTypes.bool,
+  isSecondary: PropTypes.bool,
   isDanger: PropTypes.bool,
 };

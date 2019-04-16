@@ -7,9 +7,9 @@ import { Button, Callout, Callouts,
 
 const ButtonDemo = () => <>
   <Button>Primary!</Button>
-  <Button isPrimary={false}>Secondary!</Button>
+  <Button isSecondary>Secondary!</Button>
   <Button isDanger>Danger!</Button>
-  <Button isDanger isPrimary={false}>Secondary Danger!</Button>
+  <Button isDanger isSecondary>Secondary Danger!</Button>
 </>;
 
 const CalloutDemo = () => <React.Fragment>

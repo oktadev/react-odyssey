@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { Button, Callout, Callouts,
+import { Button, Callout, Callouts, Card,
   FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
   Modal, Select } from '../src';
 
@@ -22,6 +22,19 @@ const CalloutDemo = () => <React.Fragment>
     <p>No title</p>
   </Callout>
 </React.Fragment>;
+
+const CardActions = <>
+  <Button>Cool!</Button>
+  <Button isSecondary isDanger>Oh no!</Button>
+</>;
+
+const CardDemo = () => <Card
+  title="Computer Overheated!"
+  meta="Thermite may have been involved"
+  mediaSrc="https://geoff.greer.fm/photos/thermite/thumbs/P1010014_crop.jpg"
+  actions={CardActions}>
+  This card is about a computer getting thermited.
+</Card>;
 
 class FormDemo extends React.Component {
   private ref1 = React.createRef<HTMLInputElement>();
@@ -101,6 +114,10 @@ const App = () => <div style={{ maxWidth: 1248, margin: 'auto', padding: 20 }}>
 
   <h2 id="callout">Callout</h2>
   <CalloutDemo />
+  <Spacer />
+
+  <h2 id="card">Card</h2>
+  <CardDemo />
   <Spacer />
 
   <h2 id="form">Form</h2>

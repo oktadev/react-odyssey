@@ -16,7 +16,7 @@ export type FieldSetProps = {
   aside?: ReactNode;
   children: ReactNode;
   error?: ReactNode;
-  htmlFor: string;
+  htmlFor?: string;
   label?: ReactNode;
   legend?: ReactNode;
 };

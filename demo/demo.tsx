@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import { Button, Callout, Callouts, Card,
-  FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
+  FieldSet, FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
   Modal, Select } from '../src';
 
 const ButtonDemo = () => <>
@@ -59,8 +59,8 @@ class FormDemo extends React.Component {
         <option value="2">Two</option>
       </Select>
       <FormActions>
-        <button className="button is-button-primary" type="button">Button</button>
-        <button className="button is-button-secondary" type="button">Other Button</button>
+        <Button>Button</Button>
+        <Button isSecondary>Other Button isSecondary</Button>
       </FormActions>
       <FormFooter>
         By clicking Button, you implicitly agree to this form footer.
@@ -97,7 +97,7 @@ class ModalDemo extends React.Component<{}, { submitted: boolean }> {
           Example modal text?
         </p>
       </Modal>
-      <button type="button" className="button is-button-primary" onClick={e => this.modalRef.current.open(e)}>Open modal</button>
+      <Button onClick={e => this.modalRef.current.open(e)}>Open modal</Button>
       { this.state.submitted && <h4>SUBMITTED</h4>}
     </>;
   }

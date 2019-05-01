@@ -49,9 +49,11 @@ class FormDemo extends React.Component {
       <p>
         This is a form!
       </p>
-      <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} />
-      <TextInput label={<h5>a text input React Node as Label</h5>} />
-      <PasswordInput label="Password Input" ref={this.ref2} />
+      <FieldSet legend="I'm a FieldSet">
+        <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} />
+        <TextInput label={<h5>a text input React Node as Label</h5>} />
+        <PasswordInput label="Password Input" ref={this.ref2} />
+      </FieldSet>
       <CheckBox label="Check Box" ref={this.ref3} />
       <TextArea label="Text Area" ref={this.ref4} />
       <Select label="Select me" ref={this.ref5} aside="This is a select thingy.">

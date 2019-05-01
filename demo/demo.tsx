@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import { Button, Callout, Callouts, Card,
-  FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
+  FieldSet, FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
   Modal, Select } from '../src';
 
 const ButtonDemo = () => <>
@@ -49,9 +49,11 @@ class FormDemo extends React.Component {
       <p>
         This is a form!
       </p>
-      <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} />
-      <TextInput label={<h5>a text input React Node as Label</h5>} />
-      <PasswordInput label="Password Input" ref={this.ref2} />
+      <FieldSet legend="I'm a FieldSet">
+        <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} />
+        <TextInput label={<h5>a text input React Node as Label</h5>} />
+        <PasswordInput label="Password Input" ref={this.ref2} />
+      </FieldSet>
       <CheckBox label="Check Box" ref={this.ref3} />
       <TextArea label="Text Area" ref={this.ref4} />
       <Select label="Select me" ref={this.ref5} aside="This is a select thingy.">
@@ -59,8 +61,8 @@ class FormDemo extends React.Component {
         <option value="2">Two</option>
       </Select>
       <FormActions>
-        <button className="button is-button-primary" type="button">Button</button>
-        <button className="button is-button-secondary" type="button">Other Button</button>
+        <Button>Button</Button>
+        <Button isSecondary>Other Button isSecondary</Button>
       </FormActions>
       <FormFooter>
         By clicking Button, you implicitly agree to this form footer.
@@ -97,7 +99,7 @@ class ModalDemo extends React.Component<{}, { submitted: boolean }> {
           Example modal text?
         </p>
       </Modal>
-      <button type="button" className="button is-button-primary" onClick={e => this.modalRef.current.open(e)}>Open modal</button>
+      <Button onClick={e => this.modalRef.current.open(e)}>Open modal</Button>
       { this.state.submitted && <h4>SUBMITTED</h4>}
     </>;
   }

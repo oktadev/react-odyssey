@@ -13,19 +13,21 @@ export const FormActions: FunctionComponent<{}> = ({ children }) => <section cla
 export const FormFooter: FunctionComponent<{}> = ({ children }) => <footer className="form--footer">{ children }</footer>;
 
 export type FieldSetProps = {
-  htmlFor: string;
-  label?: ReactNode;
   aside?: ReactNode;
   children: ReactNode;
   error?: ReactNode;
+  htmlFor?: string;
+  label?: ReactNode;
+  legend?: ReactNode;
 };
 
 // fieldset component. Wraps inputs in the correct markup & classes for Nim.
-export const FieldSet: FunctionComponent<FieldSetProps> = ({ htmlFor, label, aside, children, error }) => <fieldset className="fieldset">
+export const FieldSet: FunctionComponent<FieldSetProps> = ({ legend, htmlFor, label, aside, children, error }) => <fieldset className="fieldset">
   <div className={classNames('fieldset-flex', { error })}>
-    { label && <label className="label" htmlFor={htmlFor}>{ label }</label> }
+    { legend && <legend className="group-legend">{ legend }</legend>}
+    { label && <label className="label" htmlFor={htmlFor}>{ label }</label>}
     { children }
-    { aside && <aside className="field--hint">{ aside }</aside> }
+    { aside && <aside className="field--hint">{ aside }</aside>}
     { error && <aside className="field--error">{ error }</aside>}
   </div>
 </fieldset>;
@@ -35,6 +37,7 @@ FieldSet.propTypes = {
   error: PropTypes.node,
   htmlFor: PropTypes.string,
   label: PropTypes.node,
+  legend: PropTypes.node,
 };
 
 interface InputPropsNoRef extends InputHTMLAttributes<HTMLInputElement> {

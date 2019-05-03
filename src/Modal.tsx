@@ -18,10 +18,10 @@ export type ModalProps = {
   type?: ModalType;
 };
 
-export class Modal extends React.Component<ModalProps, { showModal: boolean }> {
+export class Modal extends React.Component<ModalProps> {
   public static setAppElement = ReactModal.setAppElement;
 
-  private static defaultProps = {
+  public static defaultProps = {
     submitBtnTxt: 'Submit',
     type: 'primary',
   };
@@ -37,63 +37,44 @@ export class Modal extends React.Component<ModalProps, { showModal: boolean }> {
     type: PropTypes.string, // TODO: use oneOf() + ModalType here
   }
 
-  public constructor (props: ModalProps) {
-    super(props);
-    this.state = {
-      showModal: false,
-    };
-  }
+  public style = {
+    content: { display: 'block' },
+    overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+  };
 
-  public open (ev?: ModalEvent) {
-    if (ev) {
-      ev.preventDefault();
-    }
-    this.setState({ showModal: true });
-  }
-
-  public close (ev?: ModalEvent) {
-    if (ev) {
-      ev.preventDefault();
+  public close = (e?: ModalEvent) => {
+    if (e) {
+      e.preventDefault();
     }
     if (this.props.onCancel) {
       this.props.onCancel();
     }
-    this.setState({ showModal: false });
   }
 
-  public submit (ev: React.SyntheticEvent<HTMLButtonElement>) {
-    if (ev) {
-      ev.preventDefault();
+  public submit = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.preventDefault();
     }
     this.props.submit();
   }
 
   public render () {
     const { cancellable, children, disabled, submitBtnTxt, title, type } = this.props;
-    const close = (e: ModalEvent) => this.close(e);
-    return <ReactModal
-      isOpen={this.state.showModal}
-      onRequestClose={close}
-      shouldCloseOnOverlayClick={true}
-      className="modal"
-      style={{
-        content: { display: 'block' },
-        overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-      }}>
-      <div className={classNames('modal--overlay', `is-modal-${type}`)} >
+    return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="modal" style={this.style}>
+      <div className={classNames('modal--overlay', `is-modal-${type}`)}>
         <div className="modal--dialog">
           <div className="modal--header">
             <h1 className="modal--title">{title}</h1>
-            <button className="modal--close" aria-label="Close modal" data-micromodal-close onClick={close} />
+            <button className="modal--close" aria-label="Close modal" data-micromodal-close onClick={this.close} />
           </div>
           <div className="modal--content">
             {children}
           </div>
           <div className="modal--footer">
-            <button type="button" className={`button is-button-${type}`} disabled={disabled} onClick={e => this.submit(e)}>
+            <button type="button" className={`button is-button-${type}`} disabled={disabled} onClick={this.submit}>
               {submitBtnTxt}
             </button>
-            { cancellable && <button type="button" className="button is-button-secondary" disabled={disabled} onClick={close}>
+            { cancellable && <button type="button" className="button is-button-secondary" disabled={disabled} onClick={this.close}>
               Cancel
             </button> }
           </div>

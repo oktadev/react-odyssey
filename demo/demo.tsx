@@ -73,33 +73,28 @@ class FormDemo extends React.Component {
 
 Modal.setAppElement('body');
 
+class ModalDemo extends React.Component<{}, { submitted: boolean; open: boolean }> {
+  public state = {
+    submitted: false,
+    open: false,
+  };
 
-class ModalDemo extends React.Component<{}, { submitted: boolean }> {
-  private modalRef = React.createRef<Modal>();
-  public constructor (props: {}) {
-    super(props);
-    this.state = {
-      submitted: false,
-    };
-  }
-
-  private submit (e: MouseEvent) {
-    this.setState({ submitted: true });
-    this.modalRef.current.close(e);
+  private submit () {
+    this.setState({ submitted: true, open: false });
   }
 
   public render () {
     return <>
-      <Modal
-        ref={this.modalRef}
+      {this.state.open && <Modal
         title="Example Modal"
         submitBtnTxt="Submit!"
+        onCancel={() => this.setState({ open: false })}
         submit={this.submit.bind(this)}>
         <p>
           Example modal text?
         </p>
-      </Modal>
-      <Button onClick={e => this.modalRef.current.open(e)}>Open modal</Button>
+      </Modal>}
+      <Button onClick={() => this.setState({ open: true })}>Open modal</Button>
       { this.state.submitted && <h4>SUBMITTED</h4>}
     </>;
   }

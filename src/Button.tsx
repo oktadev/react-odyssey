@@ -7,7 +7,7 @@ export interface ButtonPropsNoRef extends ButtonHTMLAttributes<HTMLButtonElement
   className?: string;
   isSecondary?: boolean;
   isDanger?: boolean;
-};
+}
 
 export interface ButtonProps extends ButtonPropsNoRef {
   ref?: React.RefObject<HTMLButtonElement>;

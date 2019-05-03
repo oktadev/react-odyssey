@@ -45,7 +45,7 @@ interface InputPropsNoRef extends InputHTMLAttributes<HTMLInputElement> {
   aside?: ReactNode;
   error?: ReactNode;
   htmlFor?: string;
-};
+}
 
 export interface InputProps extends InputPropsNoRef {
   ref?: React.RefObject<HTMLInputElement>;
@@ -113,7 +113,7 @@ interface SelectPropsNoRef extends SelectHTMLAttributes<HTMLSelectElement> {
   label: ReactNode;
   aside?: ReactNode;
   error?: ReactNode;
-};
+}
 
 export interface SelectProps extends SelectPropsNoRef {
   ref?: React.RefObject<HTMLSelectElement>;
@@ -138,7 +138,7 @@ interface TextAreaPropsNoRef extends TextareaHTMLAttributes<HTMLTextAreaElement>
   aside?: ReactNode;
   error?: ReactNode;
   required?: boolean;
-};
+}
 
 export interface TextAreaProps extends TextAreaPropsNoRef {
   ref?: React.RefObject<HTMLTextAreaElement>;

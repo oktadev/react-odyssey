@@ -1,9 +1,9 @@
 {
   "env": {
     "es6": true,
-    "node": true,
   },
   "extends": [
+     "eslint:recommended",
      "plugin:@typescript-eslint/recommended",
      "plugin:import/errors",
      "plugin:import/warnings",
@@ -64,6 +64,7 @@
     "no-invalid-this": 0,
     "no-irregular-whitespace": "error",
     "no-multiple-empty-lines": 0,
+    "no-restricted-globals": "error",
     "no-param-reassign": 0,
     "no-shadow": 2,
     "no-trailing-spaces": "error",

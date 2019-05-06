@@ -42,8 +42,10 @@
   },
   "rules": {
     "arrow-spacing": ["error", { "before": true, "after": true }],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "camelcase": 0,
     "consistent-return": 0,
+    "curly": "error",
     "default-case": 0,
     "dot-notation": "warn",
     "eqeqeq": ["error", "always"],

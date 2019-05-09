@@ -58,6 +58,7 @@
     "watch": "NODE_ENV=development webpack --config webpack.config.js --progress --colors --watch",
     "demo": "webpack-dev-server --config webpack.config.demo.js --progress --colors --watch"
   },
+  "prepublishOnly": "yarn build",
   "main": "./dist/main.js",
   "module": "./dist/main.js"
 }

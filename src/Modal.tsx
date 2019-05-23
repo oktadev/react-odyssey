@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 export type ModalType = 'primary' | 'secondary' | 'danger';
 
-type ModalEvent = MouseEvent | KeyboardEvent | React.SyntheticEvent<HTMLButtonElement>;
+type ModalEvent = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | React.SyntheticEvent<HTMLButtonElement>;
 
 export type ModalProps = {
   cancellable?: boolean;

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "incremental": true,
@@ -10,6 +9,7 @@
     "noImplicitAny": true,
     "outDir": "./dist/",
     "sourceMap": true,
+    "declaration": true,
     "target": "es2018",
   },
   "lib": ["es2018"],

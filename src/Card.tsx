@@ -12,9 +12,11 @@ export type CardProps = {
   mediaSrc?: string;
   meta?: ReactNode;
   title?: ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
 };
 
-export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, mediaSrc }) => <article className="card is-card-action">
+export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, mediaSrc, style, className='' }) => <article style={style} className={`card is-card-action ${className}`}>
   { mediaSrc && <figure className="card--media">
     <img className="card--media-image" src={mediaSrc} />
   </figure>}

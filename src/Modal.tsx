@@ -1,20 +1,22 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import { Button } from './Button';
+import { Omit } from './util';
 
 export type ModalType = 'primary' | 'secondary' | 'danger';
 
 type ModalEvent = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | React.SyntheticEvent<HTMLButtonElement>;
 
-export type ModalProps = {
+export type ModalProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   cancellable?: boolean;
-  children: ReactNode;
   disabled?: boolean;
   onCancel?: Function;
-  submitBtnTxt?: string;
+  submitBtnTxt?: React.ReactNode;
   submit: Function;
-  title?: string;
+  title?: React.ReactNode;
   type?: ModalType;
 };
 
@@ -22,18 +24,19 @@ export class Modal extends React.Component<ModalProps> {
   public static setAppElement = ReactModal.setAppElement;
 
   public static defaultProps = {
+    children: '',
     submitBtnTxt: 'Submit',
     type: 'primary',
   };
 
   public static propTypes = {
     cancellable: PropTypes.bool,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     disabled: PropTypes.bool,
     onCancel: PropTypes.func,
-    submitBtnTxt: PropTypes.string,
+    submitBtnTxt: PropTypes.node,
     submit: PropTypes.func.isRequired,
-    title: PropTypes.string,
+    title: PropTypes.node,
     type: PropTypes.string, // TODO: use oneOf() + ModalType here
   }
 
@@ -59,24 +62,25 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   public render () {
-    const { cancellable, children, disabled, submitBtnTxt, title, type } = this.props;
+    const { cancellable, children, disabled, submitBtnTxt, title, type, className, ...rest } = this.props;
+
     return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="modal" style={this.style}>
-      <div className={classNames('modal--overlay', `is-modal-${type}`)}>
+      <div className={classNames('modal--overlay', `is-modal-${type}`, className)}  {...rest}>
         <div className="modal--dialog">
           <div className="modal--header">
-            <h1 className="modal--title">{title}</h1>
+            <h1 className="modal--title">{ title }</h1>
             <button className="modal--close" aria-label="Close modal" data-micromodal-close onClick={this.close} />
           </div>
           <div className="modal--content">
-            {children}
+            { children }
           </div>
           <div className="modal--footer">
-            <button type="button" className={`button is-button-${type}`} disabled={disabled} onClick={this.submit}>
-              {submitBtnTxt}
-            </button>
-            { cancellable && <button type="button" className="button is-button-secondary" disabled={disabled} onClick={this.close}>
+            <Button isSecondary={type === 'secondary'} isDanger={type === 'danger'} disabled={disabled} onClick={this.submit}>
+              { submitBtnTxt }
+            </Button>
+            { cancellable && <Button isSecondary disabled={disabled} onClick={this.close}>
               Cancel
-            </button> }
+            </Button> }
           </div>
         </div>
       </div>

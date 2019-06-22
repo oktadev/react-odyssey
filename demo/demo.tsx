@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
 import { Button, Callout, Callouts, Card,
-  FieldSet, FormTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
+  FieldSet, FormHeaderWithTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
   Modal, Select } from '../src';
 
 const ButtonDemo = () => <>
@@ -24,47 +24,68 @@ const CalloutDemo = () => <React.Fragment>
 </React.Fragment>;
 
 const CardActions = <>
-  <Button>Cool!</Button>
   <Button isSecondary isDanger>Oh no!</Button>
+  <Button>Cool!</Button>
 </>;
 
 const CardDemo = () => <Card
   title="Computer Overheated!"
   meta="Thermite may have been involved"
-  mediaSrc="https://geoff.greer.fm/photos/thermite/thumbs/P1010014_crop.jpg"
+  src="https://geoff.greer.fm/photos/thermite/thumbs/P1010014_crop.jpg"
   actions={CardActions}>
   This card is about a computer getting thermited.
 </Card>;
 
-class FormDemo extends React.Component {
-  private ref1 = React.createRef<HTMLInputElement>();
-  private ref2 = React.createRef<HTMLInputElement>();
-  private ref3 = React.createRef<HTMLInputElement>();
-  private ref4 = React.createRef<HTMLTextAreaElement>();
-  private ref5 = React.createRef<HTMLSelectElement>();
+class FormDemo extends React.Component<{}, {msg: string; inputValue: string}> {
+  ref1 = React.createRef<HTMLInputElement>();
+  ref2 = React.createRef<HTMLInputElement>();
+  ref3 = React.createRef<HTMLInputElement>();
+  ref4 = React.createRef<HTMLTextAreaElement>();
+  ref5 = React.createRef<HTMLSelectElement>();
+  ref6 = React.createRef<HTMLButtonElement>();
 
-  public render () {
-    return <form className="form">
-      <FormTitle>Title</FormTitle>
+  state = {
+    msg: '',
+    inputValue: '',
+  };
+
+  render () {
+    const { msg, inputValue } = this.state;
+    return <form className="form" onSubmit={e => {
+      e.preventDefault();
+      const formValues = {
+        [this.ref1.current.name]: this.ref1.current.value,
+        'controlled input': inputValue,
+        [this.ref2.current.name]: this.ref2.current.value,
+        [this.ref3.current.name]: this.ref3.current.checked ? 'checked' : 'not checked',
+        [this.ref4.current.name]: this.ref4.current.value,
+        [this.ref5.current.name]: this.ref5.current.value,
+        [this.ref6.current.name]: this.ref6.current.type,
+      };
+      this.setState({ msg: JSON.stringify(formValues, null, 2) });
+    }
+    }>
+      <FormHeaderWithTitle>Title</FormHeaderWithTitle>
       <p>
         This is a form!
       </p>
-      <FieldSet legend="I'm a FieldSet">
-        <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} />
-        <TextInput label={<h5>a text input React Node as Label</h5>} />
-        <PasswordInput label="Password Input" ref={this.ref2} />
+      <FieldSet legend="I'm a FieldSet legend">
+        <TextInput label="Text Input" defaultValue="default value" autoSave="off" autoComplete="off" autoFocus={false} ref={this.ref1} name="TextInput" />
+        <TextInput legend="I'm a TextInput legend" label={<h5>I&rsquo;m a text input React Node as Label (controlled input)</h5>} required={false} value={inputValue} onChange={e => this.setState({ inputValue: e.target.value })}/>
+        <PasswordInput label="Password Input" ref={this.ref2} name="PasswordInput" required={false} />
       </FieldSet>
-      <CheckBox label="Check Box" ref={this.ref3} />
-      <TextArea label="Text Area" ref={this.ref4} />
-      <Select label="Select me" ref={this.ref5} aside="This is a select thingy.">
+      <CheckBox label="Check Box" ref={this.ref3} name="CheckBox" />
+      <TextArea label="Text Area" ref={this.ref4} name="TextArea" required={false} />
+      <Select label="Select me" ref={this.ref5} aside="This is a select thingy." name="Select">
         <option value="1">One</option>
         <option value="2">Two</option>
       </Select>
       <FormActions>
-        <Button>Button</Button>
-        <Button isSecondary>Other Button isSecondary</Button>
+        <Button isSecondary onClick={() => this.setState({ msg: '' })}>Hide values</Button>
+        <Button type="submit" ref={this.ref6} name="Button">Show values</Button>
       </FormActions>
-      <FormFooter>
+      <pre>{ msg }</pre>
+      <FormFooter className="special-extra">
         By clicking Button, you implicitly agree to this form footer.
       </FormFooter>
     </form>;
@@ -74,7 +95,7 @@ class FormDemo extends React.Component {
 Modal.setAppElement('body');
 
 class ModalDemo extends React.Component<{}, { submitted: boolean; open: boolean }> {
-  public state = {
+  state = {
     submitted: false,
     open: false,
   };
@@ -83,7 +104,7 @@ class ModalDemo extends React.Component<{}, { submitted: boolean; open: boolean 
     this.setState({ submitted: true, open: false });
   }
 
-  public render () {
+  render () {
     return <>
       {this.state.open && <Modal
         title="Example Modal"

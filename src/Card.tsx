@@ -1,24 +1,25 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
-export const CardActions: FunctionComponent<{}> = ({ children }) => <section className="card--actions">{ children }</section>;
+import { Omit } from './util';
 
-export const CardFooter: FunctionComponent<{}> = ({ children }) => <footer className="card--footer">{ children }</footer>;
+export const CardActions: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className='', ...rest }) =>
+  <section className={`card--actions ${className}`} {...rest}>{ children }</section>;
 
-export type CardProps = {
+export const CardFooter: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className='', ...rest }) =>
+  <footer className={`card--footer ${className}`} {...rest}>{ children }</footer>;
+
+export type CardProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   actions?: ReactNode;
-  children: ReactNode;
   icon?: ReactNode;
-  mediaSrc?: string;
+  src?: string;
   meta?: ReactNode;
   title?: ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
 };
 
-export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, mediaSrc, style, className='' }) => <article style={style} className={`card is-card-action ${className}`}>
-  { mediaSrc && <figure className="card--media">
-    <img className="card--media-image" src={mediaSrc} />
+export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, src, style, className='', ...rest }) => <article style={style} className={`card is-card-action ${className}`} {...rest}>
+  { src && <figure className="card--media">
+    <img className="card--media-image" src={src} />
   </figure>}
   { (icon || meta || title) && <header className="card--header">
     { icon && <figure className="card--header-icon">
@@ -40,12 +41,11 @@ export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, ti
   </CardFooter> }
 </article>;
 
-
 Card.propTypes = {
   actions: PropTypes.node,
   children: PropTypes.node.isRequired,
   icon: PropTypes.node,
-  mediaSrc: PropTypes.string,
+  src: PropTypes.string,
   meta: PropTypes.node,
   title: PropTypes.node,
 };

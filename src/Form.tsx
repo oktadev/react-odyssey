@@ -41,7 +41,7 @@ type OurFieldSetProps = {
 
 export type FieldSetProps = FieldsetHTMLAttributes<HTMLFieldSetElement> & OurFieldSetProps;
 
-// fieldset component. Wraps inputs in the correct markup & classes for Nim.
+// fieldset component. Wraps inputs in the correct markup & classes for Odyssey.
 export const FieldSet: FunctionComponent<FieldSetProps> = ({ legend, htmlFor, label, aside, children, error, className, ...rest }) => <fieldset className={classNames('fieldset', className)} {...rest}>
   <div className={classNames('fieldset-flex', { error })}>
     { legend && <legend className="group-legend">{ legend }</legend>}
@@ -64,7 +64,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & OurFieldSetProp
   ref?: React.Ref<HTMLInputElement>;
 };
 
-// TODO (ggreer): this is very similar to FieldSet. Figure out how to fix Nim and/or Fieldset to reduce the repetitive code.
+// TODO (ggreer): this is very similar to FieldSet. Figure out how to fix Odyssey and/or Fieldset to reduce the repetitive code.
 export const CheckBox: RefForwardingComponent<HTMLInputElement, InputProps> = forwardRef<HTMLInputElement, InputProps>(({ id, label, aside, error, children, ...otherProps }, ref) => <fieldset className="fieldset">
   <div className={classNames('fieldset-flex', { error })}>
     <label htmlFor={id}>
@@ -93,8 +93,8 @@ export const TextInput: React.ComponentType<InputProps> = forwardRef<HTMLInputEl
     autoFocus = false;
   }
   return <FieldSet legend={legend} htmlFor={id} label={label} aside={aside} error={error}>
-    { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
-       * Nim also adds an "optional" text next to non-required inputs, so default to required.
+    { /* Odyssey styles data-invalid="false" as red. Work around this by un-setting the attribute.
+       * Odyssey also adds an "optional" text next to non-required inputs, so default to required.
        */}
     <input id={id} type="text" className={classNames('text-input', className)} data-invalid={error ? true : undefined} ref={ref} required={required} autoFocus={autoFocus} {...otherProps} />
     { children }
@@ -111,8 +111,8 @@ TextInput.displayName = 'TextInput';
 
 export const PasswordInput: React.ComponentType<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ id, label, legend, aside, error, required = true, className, children, ...otherProps }, ref) =>
   <FieldSet legend={legend} htmlFor={id} label={label} aside={aside} error={error}>
-    { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
-       * Nim also adds an "optional" text next to non-required inputs, so default to required.
+    { /* Odyssey styles data-invalid="false" as red. Work around this by un-setting the attribute.
+       * Odyssey also adds an "optional" text next to non-required inputs, so default to required.
        */}
     <input id={id} type="password" autoComplete="off" className={classNames('text-input', className)} data-invalid={error ? true : undefined} ref={ref} required={required} {...otherProps} />
     { children }
@@ -151,8 +151,8 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & OurFie
 
 export const TextArea: RefForwardingComponent<HTMLTextAreaElement, TextAreaProps> = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ id, label, legend, aside, error, required = true, className, children, ...otherProps }, ref) =>
   <FieldSet legend={legend} htmlFor={id} label={label} aside={aside} error={error}>
-    { /* Nim styles data-invalid="false" as red. Work around this by un-setting the attribute.
-       * Nim also adds an "optional" text next to non-required inputs, so default to required.
+    { /* Odyssey styles data-invalid="false" as red. Work around this by un-setting the attribute.
+       * Odyssey also adds an "optional" text next to non-required inputs, so default to required.
        */}
     <textarea id={id} ref={ref} className={classNames('text-input', className)} required={required} data-invalid={error ? true : undefined} {...otherProps} />
     { children }

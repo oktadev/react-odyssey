@@ -37,7 +37,7 @@ const webpackConfig = {
     path: buildDir,
     publicPath: '/',
     libraryTarget: 'umd',
-    library: 'ReactNim',
+    library: 'ReactOdyssey',
   },
   module: {
     rules: [

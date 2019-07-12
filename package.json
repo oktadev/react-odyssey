@@ -1,7 +1,7 @@
 {
-  "name": "react-nim",
-  "version": "0.0.17",
-  "description": "Nim React",
+  "name": "react-odyssey",
+  "version": "1.0.0",
+  "description": "React components for Odyssey design system",
   "author": "Okta, Inc.",
   "license": "Apache-2.0",
   "dependencies": {
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oktadeveloper/react-nim"
+    "url": "https://github.com/oktadeveloper/react-odyssey"
   },
   "scripts": {
     "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",

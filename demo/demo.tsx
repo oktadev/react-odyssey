@@ -124,7 +124,7 @@ class ModalDemo extends React.Component<{}, { submitted: boolean; open: boolean 
 const Spacer = () => <div style={{ height: 50 }} />;
 
 const App = () => <div style={{ maxWidth: 1248, margin: 'auto', padding: 20 }}>
-  <h1>React Nim Hot Loaded Demo</h1>
+  <h1>React Odyssey Hot Loaded Demo</h1>
   <h2 id="button">Button</h2>
   <ButtonDemo />
   <Spacer />

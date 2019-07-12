@@ -42,8 +42,6 @@ module.exports = {
     chunkFilename: '[name].js',
     path: buildDir,
     publicPath: '/',
-    // libraryTarget: 'umd',
-    // library: 'ReactNim',
   },
   module: {
     rules: [

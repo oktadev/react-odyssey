@@ -7,7 +7,9 @@ React components for Odyssey design framework.
 
 ## Usage
 
-To see example usage, clone this repository and run:
+To see how components look and behave, visit https://oktadeveloper.github.io/react-odyssey/
+
+Or clone this repository and run:
 - `yarn`
 - `yarn demo`
 

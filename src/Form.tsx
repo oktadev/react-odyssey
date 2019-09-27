@@ -8,6 +8,7 @@ import React, {
   RefForwardingComponent,
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
+  LabelHTMLAttributes,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -31,6 +32,11 @@ export const FormActions: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ ch
 export const FormFooter: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className, ...rest }) =>
   <footer className={classNames('form--footer', className)} {...rest}>{ children }</footer>;
 
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> { optional?: boolean }
+export const Label: FunctionComponent<LabelProps> = ({ children, className, optional, ...rest }) => <label className={className || "label"} {...rest}>
+  { children }{ optional && <span className="label--optional">Optional</span>}
+</label>;
+
 type OurFieldSetProps = {
   aside?: ReactNode;
   error?: ReactNode;
@@ -44,11 +50,11 @@ export type FieldSetProps = FieldsetHTMLAttributes<HTMLFieldSetElement> & OurFie
 // fieldset component. Wraps inputs in the correct markup & classes for Odyssey.
 export const FieldSet: FunctionComponent<FieldSetProps> = ({ legend, htmlFor, label, aside, children, error, className, ...rest }) => <fieldset className={classNames('fieldset', className)} {...rest}>
   <div className={classNames('fieldset-flex', { error })}>
-    { legend && <legend className="group-legend">{ legend }</legend>}
-    { label && <label className="label" htmlFor={htmlFor}>{ label }</label>}
+    { legend && <legend className="group-legend">{ legend }</legend> }
+    { label && <Label htmlFor={htmlFor}>{ label }</Label>}
     { children }
-    { aside && <aside className="field--hint">{ aside }</aside>}
-    { error && <aside className="field--error">{ error }</aside>}
+    { error && <aside className="field--error">{ error }</aside> }
+    { aside && <aside className="field--hint">{ aside }</aside> }
   </div>
 </fieldset>;
 FieldSet.propTypes = {
@@ -72,8 +78,8 @@ export const CheckBox: RefForwardingComponent<HTMLInputElement, InputProps> = fo
       { label }
       { children }
     </label>
+    { error && <aside className="field--error">{ error }</aside> }
     { aside && <aside className="field--hint">{ aside }</aside> }
-    { error && <aside className="field--error">{ error }</aside>}
   </div>
 </fieldset>);
 CheckBox.displayName = 'CheckBox';

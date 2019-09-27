@@ -3,10 +3,10 @@ import * as ReactDom from 'react-dom';
 
 import { Button, Callout, Callouts, Card,
   FieldSet, FormHeaderWithTitle, TextInput, PasswordInput, CheckBox, TextArea, FormActions, FormFooter,
-  Modal, Select } from '../src';
+  Modal, Select, ExternalA, Meter } from '../src';
 
 const ButtonDemo = () => <>
-  <Button>Primary!</Button>
+  <Button onClick={() => window.alert('onclick')}>Primary!</Button>
   <Button isSecondary>Secondary!</Button>
   <Button isDanger>Danger!</Button>
   <Button isDanger isSecondary>Secondary Danger!</Button>
@@ -36,6 +36,7 @@ const CardDemo = () => <Card
   This card is about a computer getting thermited.
 </Card>;
 
+const LoremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 class FormDemo extends React.Component<{}, {msg: string; inputValue: string}> {
   ref1 = React.createRef<HTMLInputElement>();
   ref2 = React.createRef<HTMLInputElement>();
@@ -74,12 +75,14 @@ class FormDemo extends React.Component<{}, {msg: string; inputValue: string}> {
         <TextInput legend="I'm a TextInput legend" label={<h5>I&rsquo;m a text input React Node as Label (controlled input)</h5>} required={false} value={inputValue} onChange={e => this.setState({ inputValue: e.target.value })}/>
         <PasswordInput label="Password Input" ref={this.ref2} name="PasswordInput" required={false} />
       </FieldSet>
-      <CheckBox label="Check Box" ref={this.ref3} name="CheckBox" />
+      <CheckBox label="Check Box" ref={this.ref3} name="CheckBox" id="asdf"/>
       <TextArea label="Text Area" ref={this.ref4} name="TextArea" required={false} />
       <Select label="Select me" ref={this.ref5} aside="This is a select thingy." name="Select">
         <option value="1">One</option>
         <option value="2">Two</option>
       </Select>
+
+      <TextInput label="Error Input" error="Oh no." aside={LoremIpsum} />
       <FormActions>
         <Button isSecondary onClick={() => this.setState({ msg: '' })}>Hide values</Button>
         <Button type="submit" ref={this.ref6} name="Button">Show values</Button>
@@ -87,6 +90,10 @@ class FormDemo extends React.Component<{}, {msg: string; inputValue: string}> {
       <pre>{ msg }</pre>
       <FormFooter className="special-extra">
         By clicking Button, you implicitly agree to this form footer.
+        <br />
+        <a href="#">Link</a>
+        <br />
+        <ExternalA href="https://okta.com">External Link</ExternalA>
       </FormFooter>
     </form>;
   }
@@ -144,6 +151,14 @@ const App = () => <div style={{ maxWidth: 1248, margin: 'auto', padding: 20 }}>
   <h2 id="modal">Modal</h2>
   <ModalDemo />
   <Spacer />
+
+
+  <Spacer />
+  <h2 id="Meter">Meter</h2>
+  <Meter label="meter" min={0} max={100} low={89} high={99} optimum={80} value={30} aria-valuemin={0} />
+  <Meter label="meter" min={0} max={100} low={89} high={99} optimum={0} value={80} aria-valuemin={0} />
+
+
 </div>;
 
 ReactDom.render(<App />, document.body);

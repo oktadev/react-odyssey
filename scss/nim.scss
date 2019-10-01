@@ -31,7 +31,8 @@
 @import 'components/callout';
 @import 'components/card';
 @import 'components/checkbox';
-@import 'components/dropdown';
+// dropdowns are both experimental and a breaking change
+// @import 'components/dropdown';
 @import 'components/forms';
 @import 'components/label';
 @import 'components/meter';

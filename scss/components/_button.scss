@@ -1,0 +1,158 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.button {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: $small-spacing $base-spacing;
+  transition-property: color, background-color, border-color, transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  border: 1px solid transparent;
+  border-radius: $base-border-radius;
+  background-color: cv('action');
+  color: $white;
+  font-family: $body-font-family;
+  font-size: ms(0);
+  font-weight: 600;
+  line-height: 1;
+
+  &:hover,
+  &.is-button-hover {
+    border-color: cv('action', 'dark');
+    background-color: cv('action', 'dark');
+  }
+
+  &:active {
+    // transform: scale(0.95);
+  }
+
+  &:focus,
+  &.is-button-focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(cv('action'), 0.25);
+  }
+
+  &:disabled,
+  &.disabled,
+  .form.disabled & {
+    border-color: transparent;
+    background-color: cv('gray', '300');
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &:focus,
+    &.is-button-focus {
+      box-shadow: 0 0 0 0.2rem rgba(cv('gray', '300'), 0.25);
+    }
+  }
+}
+
+.is-button-secondary {
+  border-color: cv('action');
+  background-color: $white;
+  color: cv('action');
+
+  &:hover,
+  &.is-button-hover {
+    border-color: cv('action', 'dark');
+    background-color: $white;
+    color: cv('action', 'dark');
+  }
+
+  &:disabled,
+  &.disabled {
+    border-color: cv('gray', '300');
+    background-color: $white;
+    color: cv('gray', '300');
+    cursor: not-allowed;
+  }
+}
+
+.is-button-danger {
+  background-color: cv('danger');
+
+  &:hover,
+  &.is-button-hover {
+    border-color: cv('danger', 'dark');
+    background-color: cv('danger', 'dark');
+  }
+
+  &:focus,
+  &.is-button-focus {
+    box-shadow: 0 0 0 0.2rem rgba(cv('danger'), 0.25);
+  }
+
+  &.is-button-secondary {
+    border-color: cv('danger');
+    background-color: $white;
+    color: cv('danger');
+
+    &:hover,
+    &.is-button-hover {
+      border-color: cv('danger', 'dark');
+      background-color: $white;
+      color: cv('danger', 'dark');
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: cv('gray', '300');
+      background-color: $white;
+      color: cv('gray', '300');
+      cursor: not-allowed;
+    }
+  }
+}
+
+%button-small {
+  padding: $tiny-spacing $base-spacing;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.button,
+o-button {
+  /* stylelint-disable-next-line no-descending-specificity */
+  & + & {
+    margin-left: $small-spacing;
+  }
+}
+
+.top-bar {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .button {
+    @extend %button-small;
+  }
+}
+
+.card--footer {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .button {
+    @extend %button-small;
+  }
+}
+
+.form--header {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .button {
+    @extend %button-small;
+  }
+
+  .form:not([data-readonly]) & {
+    .button {
+      display: none;
+    }
+  }
+}

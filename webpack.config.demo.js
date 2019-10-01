@@ -3,35 +3,18 @@ const webpack = require('webpack');
 
 const CleanPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 const buildDir = path.resolve(__dirname, 'dist');
 
-// const reactExternal = {
-//   root: 'React',
-//   commonjs2: 'react',
-//   commonjs: 'react',
-//   amd: 'react'
-// };
-// const reactDOMExternal = {
-//   root: 'ReactDOM',
-//   commonjs2: 'react-dom',
-//   commonjs: 'react-dom',
-//   amd: 'react-dom'
-// };
-
 module.exports = {
   mode: env,
   entry: {
-    // main: './src/index.ts',
-    demo: './demo/demo.tsx',
+    main: './demo/demo.tsx',
     html: './demo/index.html',
   },
-  // externals: {
-  //   'react': reactExternal,
-  //   'react-dom': reactDOMExternal
-  // },
   devServer: {
     contentBase: './dist',
     // compress: true,
@@ -49,19 +32,47 @@ module.exports = {
       { test: /\.ts|\.tsx$/, loader: ['babel-loader', 'awesome-typescript-loader'], include: __dirname },
       // { test: /\.js|\.jsx$/, loader: 'babel-loader', include: __dirname },
       { test: /\.svg$/, use: ['url-loader'] },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+              plugins: [require('autoprefixer')()]
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require('sass'),
+              sourceMap: true,
+              sassOptions: {
+                fiber: require('fibers'),
+              },
+            }
+          },
+        ]
+      },
     ]
   },
   optimization: {
     minimize: false,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss']
   },
   devtool: 'source-map',
   plugins: [
     new CleanPlugin([
       `${buildDir}/*`,
     ]),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+      chunkFilename: "css/[id].css"
+    }),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
     new ManifestPlugin(),
   ]

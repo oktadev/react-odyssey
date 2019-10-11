@@ -6,13 +6,19 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   ref?: React.Ref<HTMLButtonElement>;
   isSecondary?: boolean;
   isDanger?: boolean;
+  isClear?: boolean;
+  isOverlay?: boolean;
+  isSmall?: boolean;
 }
 
-export const Button: RefForwardingComponent<HTMLButtonElement, ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, isSecondary, isDanger, type='button', ...rest }, ref) => {
+export const Button: RefForwardingComponent<HTMLButtonElement, ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, isSecondary, isDanger, isClear, isOverlay, isSmall, type='button', ...rest }, ref) => {
   const classes = classNames('button', {
-    'is-button-primary': !isSecondary,
+    'is-button-primary': !isSecondary && !isDanger && !isClear && !isOverlay,
     'is-button-secondary': isSecondary,
+    'is-button-clear': isClear,
     'is-button-danger': isDanger,
+    'is-button-overlay': isOverlay,
+    'is-button-small': isSmall,
   }, className);
   return <button ref={ref} className={classes} type={type} {...rest}>{children}</button>;
 });

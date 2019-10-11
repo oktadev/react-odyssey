@@ -1,0 +1,172 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.fieldset {
+  margin: 0 0 $base-spacing;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.form {
+  max-width: calc(#{$max-line-length} + #{$base-spacing} + #{$base-spacing} + 2px);
+  padding: $base-spacing;
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
+}
+
+.form--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 $base-spacing;
+}
+
+.form--title {
+  margin: 0;
+  padding: 0;
+  color: $text-heading;
+  font-size: ms(2);
+  font-weight: 600;
+  line-height: $heading-line-height;
+}
+
+.form--actions {
+  display: flex;
+  justify-content: flex-end;
+
+  &:not(:last-child) {
+    margin-bottom: $small-spacing;
+  }
+
+  [data-readonly] & {
+    display: none;
+  }
+}
+
+.form--footer {
+  font-size: ms(-1);
+}
+
+.field--hint,
+.field--error {
+  font-size: ms(-1);
+}
+
+.field--hint {
+  margin-bottom: $tiny-spacing;
+  color: $text-body;
+
+  .text-input:disabled ~ &,
+  .text-input[readonly] ~ & {
+    color: $text-sub;
+  }
+}
+
+.field--error {
+  display: flex;
+  align-items: center;
+  margin-top: $tiny-spacing;
+  color: cv('danger', 'base');
+
+  &::before {
+    content: '';
+    width: ms(-1);
+    height: ms(-1);
+    margin: 0 $tiny-spacing 0 0;
+    background-image: get-icon('alert', cv('danger', 'base'));
+    background-repeat: no-repeat;
+  }
+}
+
+.fieldset--pair {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .number-input,
+  .text-input,
+  .select-input {
+    width: calc(50% - #{$small-spacing});
+  }
+}
+
+.fieldset-flex {
+  display: flex;
+  flex-direction: column;
+  max-width: $max-line-length;
+
+  .label,
+  .input-legend {
+    // ASA: https://github.com/okta/odyssey/pull/12
+    // order: 1;
+    margin-bottom: $tiny-spacing;
+  }
+
+  .number-input,
+  .text-input,
+  .select-input,
+  .input--unavailable,
+  .fieldset--pair {
+    // ASA: https://github.com/okta/odyssey/pull/12
+    // order: 3;
+  }
+
+  .input--unavailable {
+    margin: 0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity  */
+  .field--hint {
+    // ASA: https://github.com/okta/odyssey/pull/12
+    // order: 2;
+    margin-bottom: $tiny-spacing;
+
+    + .label {
+      margin-bottom: 0;
+    }
+  }
+
+  .field--error {
+    // ASA: https://github.com/okta/odyssey/pull/12
+    // order: 4;
+  }
+}
+
+/* stylelint-disable-next-line no-descending-specificity  */
+.input-legend {
+  margin: 0 0 $tiny-spacing;
+  color: $text-heading;
+  font-size: ms(0);
+  font-weight: 600;
+}
+
+.group-legend {
+  margin: 0 0 $small-spacing;
+  color: $text-heading;
+  font-size: ms(1);
+  font-weight: 600;
+}
+
+.modal {
+  .form {
+    padding: 0;
+    border: 0;
+  }
+
+  .form--header {
+    @include is-visually-hidden;
+  }
+}

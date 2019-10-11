@@ -10,6 +10,12 @@ const ButtonDemo = () => <>
   <Button isSecondary>Secondary!</Button>
   <Button isDanger>Danger!</Button>
   <Button isDanger isSecondary>Secondary Danger!</Button>
+  <Button isClear>Clear</Button>
+  <Button isSmall>Small</Button>
+  <div style={{ backgroundColor: '#00d1b3', width: '100%', padding: 30, margin: '10px 0' }}>
+    <Button isOverlay>Overlay</Button>
+    <Button isOverlay disabled>Overlay Disabled</Button>
+  </div>
 </>;
 
 const CalloutDemo = () => <React.Fragment>
@@ -114,6 +120,7 @@ class ModalDemo extends React.Component<{}, { submitted: boolean; open: boolean 
   render () {
     return <>
       {this.state.open && <Modal
+        cancellable
         title="Example Modal"
         submitBtnTxt="Submit!"
         onCancel={() => this.setState({ open: false })}

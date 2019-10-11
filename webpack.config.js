@@ -95,7 +95,7 @@ const plugins = [
     chunkFilename: "css/[id].css"
   }),
   new CopyPlugin([
-    { from: './scss', to: './scss' },
+    { from: './odyssey/src/scss', to: './scss' },
   ]),
 ];
 

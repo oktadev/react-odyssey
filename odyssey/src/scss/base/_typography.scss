@@ -24,11 +24,18 @@ body {
 a {
   color: cv('action');
 
-  &:hover {
+  // ASA: https://github.com/okta/odyssey/issues/256
+  .button, &.button {
+    text-decoration: none;
+  }
+
+  // ASA: https://github.com/okta/odyssey/issues/256
+  &:hover:not(.button) {
     color: cv('action', 'dark');
   }
 
-  &:visited {
+  // ASA: https://github.com/okta/odyssey/issues/256
+  &:visited:not(.button) {
     color: cv('violet', 'dark');
   }
 
@@ -43,7 +50,6 @@ a {
     background-repeat: no-repeat;
     vertical-align: middle;
   }
-
   /* stylelint-enable */
 }
 

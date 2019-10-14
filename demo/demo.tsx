@@ -16,6 +16,23 @@ const ButtonDemo = () => <>
     <Button isOverlay>Overlay</Button>
     <Button isOverlay disabled>Overlay Disabled</Button>
   </div>
+
+  <ul>Some commonly broken buttons (that point at google.com for :visited)
+    <li>
+      <Button><a href="https://google.com">Anchor in Button</a></Button>
+      <Button isSecondary><a href="https://google.com">Anchor in Button</a></Button>
+    </li>
+    <li>
+      <a href="https://google.com"><Button>Button in Anchor</Button></a>
+      &nbsp;
+      <a href="https://google.com"><Button isSecondary>Button in Anchor</Button></a>
+    </li>
+    <li>
+      <a href="https://google.com" className="button is-button-primary">Anchor that is a .button</a>
+      &nbsp;
+      <a href="https://google.com" className="button is-button-secondary">Anchor that is a .button</a>
+    </li>
+  </ul>
 </>;
 
 const CalloutDemo = () => <React.Fragment>

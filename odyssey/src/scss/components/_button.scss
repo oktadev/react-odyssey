@@ -17,9 +17,7 @@
   position: relative;
   margin: 0;
   padding: $em-tiny-spacing $em-base-spacing;
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: 100ms;
-  transition-timing-function: linear;
+  // ASA: https://github.com/okta/odyssey/issues/255
   border: 2px solid transparent;
   border-radius: $base-border-radius;
   background-color: cv('action');
@@ -34,6 +32,7 @@
   &.is-button-hover {
     border-color: cv('action', 'dark');
     background-color: cv('action', 'dark');
+    cursor: pointer;
   }
 
   &:focus,

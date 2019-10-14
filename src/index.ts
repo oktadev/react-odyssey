@@ -7,4 +7,4 @@ export * from './Modal';
 export * from './Links';
 export * from './Meter';
 
-require('../odyssey/src/scss/odyssey.scss');
+require('./react-odyssey.scss');

@@ -36,7 +36,8 @@ a {
 
   // ASA: https://github.com/okta/odyssey/issues/256
   &:visited:not(.button) {
-    color: cv('violet', 'dark');
+    // https://github.com/okta/odyssey/issues/258
+    // color: cv('violet', 'dark');
   }
 
   /* stylelint-disable selector-no-qualifying-type */

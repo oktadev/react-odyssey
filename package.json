@@ -30,6 +30,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "5.x",
+    "eslint-config-okta": "0.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-protractor": "1.x",
     "eslint-plugin-react": "7.x",
@@ -50,6 +51,9 @@
     "webpack-cli": "3.x",
     "webpack-dev-server": "^3.2.1",
     "webpack-manifest-plugin": "2.x"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-okta"
   },
   "peerDependencies": {
     "react": "16.x",

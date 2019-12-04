@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 
 import errorSVG from '../img/callout-error.svg';
@@ -18,7 +18,7 @@ const SVGs: SVGs_ = {
   error: errorSVG,
 };
 
-export type CalloutProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
+export type CalloutProps = Omit<ComponentProps<'aside'>, 'title'> & {
   kind: Callouts;
   title?: React.ReactNode;
 };

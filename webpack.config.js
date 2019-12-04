@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -85,9 +85,7 @@ const webpackConfig = {
 };
 
 const plugins = [
-  new CleanPlugin([
-    `${buildDir}/*`,
-  ]),
+  new CleanWebpackPlugin(),
   new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
   new ManifestPlugin(),
   new MiniCssExtractPlugin({

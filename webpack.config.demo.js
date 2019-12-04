@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -66,9 +66,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new CleanPlugin([
-      `${buildDir}/*`,
-    ]),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
       chunkFilename: "css/[id].css"

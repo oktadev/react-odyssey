@@ -1,38 +1,33 @@
 import React, {
-  FieldsetHTMLAttributes,
   forwardRef,
   FunctionComponent,
-  HTMLAttributes,
-  InputHTMLAttributes,
   ReactNode,
   RefForwardingComponent,
-  SelectHTMLAttributes,
-  TextareaHTMLAttributes,
-  LabelHTMLAttributes,
+  ComponentProps,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { isMobilish } from './util';
 
-export const FormTitle: FunctionComponent<HTMLAttributes<HTMLHeadingElement>> = ({ children, className, ...rest }) =>
+export const FormTitle: FunctionComponent<ComponentProps<'h1'>> = ({ children, className, ...rest }) =>
   <h1 className={classNames('form--title', className)} {...rest}>{ children }</h1>;
 
-export const FormHeader: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className, ...rest }) =>
+export const FormHeader: FunctionComponent<ComponentProps<'header'>> = ({ children, className, ...rest }) =>
   <header className={classNames('form--header', className)} {...rest}>{ children }</header>;
 
-export const FormHeaderWithTitle: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, ...rest }) =>
+export const FormHeaderWithTitle: FunctionComponent<ComponentProps<typeof FormTitle>> = ({ children, ...rest }) =>
   <FormHeader>
     <FormTitle {...rest}>{ children }</FormTitle>
   </FormHeader>;
 
-export const FormActions: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className, ...rest }) =>
+export const FormActions: FunctionComponent<ComponentProps<'section'>> = ({ children, className, ...rest }) =>
   <section className={classNames('form--actions', className)} {...rest}>{ children }</section>;
 
-export const FormFooter: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className, ...rest }) =>
+export const FormFooter: FunctionComponent<ComponentProps<'footer'>> = ({ children, className, ...rest }) =>
   <footer className={classNames('form--footer', className)} {...rest}>{ children }</footer>;
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> { optional?: boolean }
+export type LabelProps = ComponentProps<'label'> & { optional?: boolean };
 export const Label: FunctionComponent<LabelProps> = ({ children, className, optional, ...rest }) => <label className={className || "label"} {...rest}>
   { children }{ optional && <span className="label--optional">Optional</span>}
 </label>;
@@ -45,7 +40,7 @@ type OurFieldSetProps = {
   legend?: ReactNode;
 };
 
-export type FieldSetProps = FieldsetHTMLAttributes<HTMLFieldSetElement> & OurFieldSetProps;
+export type FieldSetProps = ComponentProps<'fieldset'> & OurFieldSetProps;
 
 // fieldset component. Wraps inputs in the correct markup & classes for Odyssey.
 export const FieldSet: FunctionComponent<FieldSetProps> = ({ legend, htmlFor, label, aside, children, error, className, ...rest }) => <fieldset className={classNames('fieldset', className)} {...rest}>
@@ -66,7 +61,7 @@ FieldSet.propTypes = {
   legend: PropTypes.node,
 };
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & OurFieldSetProps & {
+export type InputProps = ComponentProps<'input'> & OurFieldSetProps & {
   ref?: React.Ref<HTMLInputElement>;
 };
 
@@ -132,7 +127,7 @@ PasswordInput.propTypes = {
 };
 
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & OurFieldSetProps & {
+export type SelectProps = ComponentProps<'select'> & OurFieldSetProps & {
   ref?: React.Ref<HTMLSelectElement>;
 };
 
@@ -151,7 +146,7 @@ Select.propTypes = {
   required: PropTypes.bool,
 };
 
-export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & OurFieldSetProps & {
+export type TextAreaProps = ComponentProps<'textarea'> & OurFieldSetProps & {
   ref?: React.Ref<HTMLTextAreaElement>;
 }
 

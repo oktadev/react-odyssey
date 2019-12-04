@@ -1,7 +1,7 @@
-import React, { MeterHTMLAttributes, ReactNode, CSSProperties } from 'react';
+import React, { ComponentProps, ReactNode, CSSProperties } from 'react';
 import classNames from 'classnames';
 
-export type MeterProps = MeterHTMLAttributes<HTMLMeterElement> & {
+export type MeterProps = ComponentProps<'meter'> & {
   children?: ReactNode;
   className?: CSSProperties;
   label?: string;

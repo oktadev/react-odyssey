@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { ReactNode, ComponentProps } from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,13 +10,13 @@ export type ModalType = 'primary' | 'secondary' | 'danger';
 
 type ModalEvent = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | React.SyntheticEvent<HTMLButtonElement>;
 
-export type ModalProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
+export type ModalProps = Omit<ComponentProps<'div'>, 'title'> & {
   cancellable?: boolean;
   disabled?: boolean;
   onCancel?: Function;
-  submitBtnTxt?: React.ReactNode;
+  submitBtnTxt?: ReactNode;
   submit: Function;
-  title?: React.ReactNode;
+  title?: ReactNode;
   type?: ModalType;
 };
 
@@ -62,7 +62,8 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   public render () {
-    const { cancellable, children, disabled, submitBtnTxt, title, type, className, ...rest } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { cancellable, children, disabled, submitBtnTxt, title, type, className, submit, ...rest } = this.props;
 
     return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="modal" style={this.style}>
       <div className={classNames('modal--overlay', `is-modal-${type}`, className)}  {...rest}>

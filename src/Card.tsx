@@ -1,15 +1,15 @@
-import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react';
+import React, { FunctionComponent, ReactNode, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 
 import { Omit } from './util';
 
-export const CardActions: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className='', ...rest }) =>
+export const CardActions: FunctionComponent<ComponentProps<'section'>> = ({ children, className='', ...rest }) =>
   <section className={`card--actions ${className}`} {...rest}>{ children }</section>;
 
-export const CardFooter: FunctionComponent<HTMLAttributes<HTMLElement>> = ({ children, className='', ...rest }) =>
+export const CardFooter: FunctionComponent<ComponentProps<'footer'>> = ({ children, className='', ...rest }) =>
   <footer className={`card--footer ${className}`} {...rest}>{ children }</footer>;
 
-export type CardProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
+export type CardProps = Omit<ComponentProps<'article'>, 'title'> & {
   actions?: ReactNode;
   icon?: ReactNode;
   src?: string;

@@ -1,8 +1,8 @@
-import React, { forwardRef, RefForwardingComponent, ButtonHTMLAttributes } from 'react';
+import React, { forwardRef, RefForwardingComponent, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ComponentProps<'button'> & {
   ref?: React.Ref<HTMLButtonElement>;
   isSecondary?: boolean;
   isDanger?: boolean;

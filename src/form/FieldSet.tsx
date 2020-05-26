@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { LabelMaker, LabelMakerProps } from './Label';
 
 
-export type FieldSetProps = ComponentProps<'fieldset'> & LabelMakerProps;
+export interface FieldSetProps extends ComponentProps<'fieldset'>, LabelMakerProps {}
 
 export const Legend: FunctionComponent<ComponentProps<'legend'>> = ({ children, className, ...rest }) =>
   <legend className={classNames("ods-group-legend", className)} {...rest}>{ children }</legend>;

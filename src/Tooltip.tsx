@@ -1,7 +1,7 @@
 import React, { ReactNode, ComponentProps, ReactElement, JSXElementConstructor } from 'react';
 import classNames from 'classnames';
 
-export type TooltipProps = ComponentProps<'span'> & {
+export interface TooltipProps extends ComponentProps<'span'> {
   tooltip: ReactNode;
   children: ReactElement<{ "aria-describedby": string }, JSXElementConstructor<any>>;
   describes?: string;

@@ -27,7 +27,6 @@ export const CheckBoxWithLabel = forwardRef<HTMLInputElement, InputProps>(({ asi
 CheckBoxWithLabel.displayName = 'CheckBoxWithLabel';
 
 
-// TODO (ggreer): this is very similar to FieldSet. Figure out how to fix Odyssey and/or Fieldset to reduce the repetitive code.
 export const CheckBoxFieldSet = forwardRef<HTMLInputElement, InputProps>((props, ref) => <FieldSetRaw>
   <CheckBoxWithLabel ref={ref} {...props} />
 </FieldSetRaw>);

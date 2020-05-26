@@ -25,7 +25,6 @@ export const RadioWithLabel = forwardRef<HTMLInputElement, InputProps>(({ aside,
 RadioWithLabel.displayName = 'RadioWithLabel';
 
 
-// TODO (ggreer): this is very similar to FieldSet. Figure out how to fix Odyssey and/or Fieldset to reduce the repetitive code.
 export const RadioFieldSet = forwardRef<HTMLInputElement, InputProps>((props, ref) => <FieldSetRaw>
   <RadioWithLabel ref={ref} {...props} />
 </FieldSetRaw>);

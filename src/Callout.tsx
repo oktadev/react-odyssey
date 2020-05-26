@@ -18,12 +18,12 @@ const SVGs: SVGs_ = {
   error: errorSVG,
 };
 
-export type CalloutProps = Omit<ComponentProps<'aside'>, 'title'> & {
+export interface CalloutProps extends Omit<ComponentProps<'aside'>, 'title'> {
   isPending?: boolean;
   isWarning?: boolean;
   isError?: boolean;
   title?: React.ReactNode;
-};
+}
 
 export const Callout: FunctionComponent<CalloutProps> = ({ title, isPending, isWarning, isError, children, className, ...rest }) => {
   let kind: Callouts = 'info';

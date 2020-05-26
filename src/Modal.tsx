@@ -8,7 +8,7 @@ export type ModalType = 'primary' | 'secondary' | 'danger';
 
 type ModalEvent = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | React.SyntheticEvent<HTMLButtonElement>;
 
-export type ModalProps = Omit<ComponentProps<'div'>, 'title' | 'ref'> & {
+export interface ModalProps extends Omit<ComponentProps<'div'>, 'title' | 'ref'> {
   cancellable?: boolean;
   disabled?: boolean;
   onCancel?: Function;
@@ -16,7 +16,7 @@ export type ModalProps = Omit<ComponentProps<'div'>, 'title' | 'ref'> & {
   submit: Function;
   title?: ReactNode;
   isDanger?: boolean;
-};
+}
 
 export class Modal extends React.Component<ModalProps> {
   public static setAppElement = ReactModal.setAppElement;

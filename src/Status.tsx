@@ -1,7 +1,7 @@
 import React, { ReactNode, ComponentProps } from 'react';
 import classNames from 'classnames';
 
-export type StatusProps = ComponentProps<'dd'> & {
+export interface StatusProps extends ComponentProps<'dd'> {
   label?: ReactNode;
   isHiddenLabel?: boolean;
   isSuccess?: boolean;

@@ -5,9 +5,9 @@ import { FieldSetRaw } from './FieldSet';
 import { LabelMaker, LabelMakerProps } from './Label';
 import { useFakeId, isMobilish } from './utils';
 
-export type SelectProps = ComponentProps<'select'> & LabelMakerProps & {
+export interface SelectProps extends ComponentProps<'select'>, LabelMakerProps {
   ref?: React.Ref<HTMLSelectElement>;
-};
+}
 
 export const SelectRaw = forwardRef<HTMLSelectElement, SelectProps>(({ id, error, children, required=true, className, ...otherProps }, ref) =>
   <select className={classNames('ods-select', className)} id={id} required={required} ref={ref} {...otherProps} data-invalid={error ? true : undefined}>

@@ -14,10 +14,10 @@ type OurFieldSetProps = {
   optional?: boolean;
 };
 
-export type InputProps = ComponentProps<'input'> & OurFieldSetProps & {
+export interface InputProps extends ComponentProps<'input'>, OurFieldSetProps {
   ref?: React.Ref<HTMLInputElement>;
-};
-export type InputRawProps = ComponentProps<'input'> & { error?: boolean };
+}
+export interface InputRawProps extends ComponentProps<'input'> { error?: boolean }
 
 { /* Odyssey styles data-invalid="false" as red. Work around this by un-setting the attribute. */ }
 export const InputRaw: React.ComponentType<InputRawProps> = forwardRef<HTMLInputElement, InputRawProps>(({ className, error, ...otherProps }, ref) =>

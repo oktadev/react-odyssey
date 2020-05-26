@@ -1,11 +1,10 @@
 import React, { ComponentProps, ReactNode, CSSProperties } from 'react';
 import classNames from 'classnames';
 
-export type MeterProps = ComponentProps<'meter'> & {
+export interface MeterProps extends ComponentProps<'meter'> {
   children?: ReactNode;
-  className?: CSSProperties;
   label?: string;
-};
+}
 
 export const Meter = ({ children, className, label, max, value, ...rest }: MeterProps) => <meter className={classNames("ods-meter", className)}
   aria-valuemax={ typeof max === 'number' ? max : parseInt(max, 10) }

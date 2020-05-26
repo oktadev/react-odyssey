@@ -1,7 +1,7 @@
 import React, { ReactNode, ComponentProps } from 'react';
 import classNames from 'classnames';
 
-export type TagsProps = ComponentProps<'ul'> & {
+export interface TagsProps extends ComponentProps<'ul'> {
   tags: ReactNode[];
 }
 

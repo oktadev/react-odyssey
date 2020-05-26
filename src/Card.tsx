@@ -8,13 +8,13 @@ export const CardActions: FunctionComponent<ComponentProps<'section'>> = ({ chil
 export const CardFooter: FunctionComponent<ComponentProps<'footer'>> = ({ children, className, ...rest }) =>
   <footer className={classNames('ods-card--footer', className)} {...rest}>{ children }</footer>;
 
-export type CardProps = Omit<ComponentProps<'article'>, 'title'> & {
+export interface CardProps extends Omit<ComponentProps<'article'>, 'title'> {
   actions?: ReactNode;
   icon?: ReactNode;
   src?: string;
   meta?: ReactNode;
   title?: ReactNode;
-};
+}
 
 export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, src, className='', ...rest }) => <article className={classNames('ods-card is-ods-card-action', className)} {...rest}>
   { src && <figure className="ods-card--media">

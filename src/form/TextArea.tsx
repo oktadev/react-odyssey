@@ -6,8 +6,8 @@ import { useFakeId, isMobilish } from './utils';
 import { FieldSetRaw } from './FieldSet';
 import { LabelMakerProps, LabelMaker  } from './Label';
 
-export type TextAreaPropsRaw = ComponentProps<'textarea'> & LabelMakerProps;
-export type TextAreaProps = TextAreaPropsRaw & {
+export interface TextAreaPropsRaw extends ComponentProps<'textarea'>, LabelMakerProps {}
+export interface TextAreaProps extends TextAreaPropsRaw {
   ref?: React.Ref<HTMLTextAreaElement>;
 }
 

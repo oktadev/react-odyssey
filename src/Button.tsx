@@ -2,7 +2,7 @@ import React, { forwardRef, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export type ButtonProps = ComponentProps<'button'> & {
+export interface ButtonProps extends ComponentProps<'button'> {
   ref?: React.Ref<HTMLButtonElement>;
   isSecondary?: boolean;
   isDanger?: boolean;

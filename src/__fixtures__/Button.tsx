@@ -26,11 +26,5 @@ export default {
       &nbsp;
       <a href="https://google.com" className="ods-button is-ods-button-secondary">Anchor that is a .button</a>
     </li>
-  </ul>,
-  // "thing": () => {
-  //   // const [isSecondary, setValue] = useValue('is Secondary', { defaultValue: true });
-  //   // return <Button isSecondary={isSecondary as boolean} onClick={() => setValue(!isSecondary) as void}>isSecondary</Button>;
-  //   const [count, setCount] = useValue<number>('couffsfsfnt', { defaultValue: 0 });
-  //   return <Button onClick={() => setCount(count + 1)} >{count}</Button>;
-  // }
+  </ul>
 };

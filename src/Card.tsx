@@ -1,13 +1,12 @@
 import React, { FunctionComponent, ReactNode, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
+import classNames from "classnames";
 
-import { Omit } from './util';
+export const CardActions: FunctionComponent<ComponentProps<'section'>> = ({ children, className, ...rest }) =>
+  <section className={classNames('ods-card--actions', className)} {...rest}>{ children }</section>;
 
-export const CardActions: FunctionComponent<ComponentProps<'section'>> = ({ children, className='', ...rest }) =>
-  <section className={`card--actions ${className}`} {...rest}>{ children }</section>;
-
-export const CardFooter: FunctionComponent<ComponentProps<'footer'>> = ({ children, className='', ...rest }) =>
-  <footer className={`card--footer ${className}`} {...rest}>{ children }</footer>;
+export const CardFooter: FunctionComponent<ComponentProps<'footer'>> = ({ children, className, ...rest }) =>
+  <footer className={classNames('ods-card--footer', className)} {...rest}>{ children }</footer>;
 
 export type CardProps = Omit<ComponentProps<'article'>, 'title'> & {
   actions?: ReactNode;
@@ -17,23 +16,24 @@ export type CardProps = Omit<ComponentProps<'article'>, 'title'> & {
   title?: ReactNode;
 };
 
-export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, src, style, className='', ...rest }) => <article style={style} className={`card is-card-action ${className}`} {...rest}>
-  { src && <figure className="card--media">
-    <img className="card--media-image" src={src} />
+export const Card: FunctionComponent<CardProps> = ({ actions, children, icon, title, meta, src, className='', ...rest }) => <article className={classNames('ods-card is-ods-card-action', className)} {...rest}>
+  { src && <figure className="ods-card--media">
+    <img className="ods-card--media-image" src={src} />
   </figure>}
-  { (icon || meta || title) && <header className="card--header">
-    { icon && <figure className="card--header-icon">
+  { (icon || meta || title) && <header className="ods-card--header">
+    { icon && <figure className="ods-card--header-icon">
+      { icon }
     </figure> }
-    { (meta || title) && <section className="card--header-main">
-      { title && <h1 className="card--title">
+    { (meta || title) && <section className="ods-card--header-main">
+      { title && <h1 className="ods-card--title">
         { title }
       </h1> }
-      { meta && <section className="card--meta">
+      { meta && <section className="ods-card--meta">
         { meta }
       </section> }
     </section> }
   </header> }
-  <section className="card--main">{ children }</section>
+  <section className="ods-card--main">{ children }</section>
   { actions && <CardFooter>
     <CardActions>
       { actions }

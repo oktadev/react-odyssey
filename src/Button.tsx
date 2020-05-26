@@ -1,4 +1,4 @@
-import React, { forwardRef, RefForwardingComponent, ComponentProps } from 'react';
+import React, { forwardRef, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -11,14 +11,14 @@ export type ButtonProps = ComponentProps<'button'> & {
   isSmall?: boolean;
 }
 
-export const Button: RefForwardingComponent<HTMLButtonElement, ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, isSecondary, isDanger, isClear, isOverlay, isSmall, type='button', ...rest }, ref) => {
-  const classes = classNames('button', {
-    'is-button-primary': !isSecondary && !isDanger && !isClear && !isOverlay,
-    'is-button-secondary': isSecondary,
-    'is-button-clear': isClear,
-    'is-button-danger': isDanger,
-    'is-button-overlay': isOverlay,
-    'is-button-small': isSmall,
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, isSecondary, isDanger, isClear, isOverlay, isSmall, type='button', ...rest }, ref) => {
+  const classes = classNames('ods-button', {
+    'is-ods-button-primary': !isSecondary && !isDanger && !isClear && !isOverlay,
+    'is-ods-button-secondary': isSecondary,
+    'is-ods-button-clear': isClear,
+    'is-ods-button-danger': isDanger,
+    'is-ods-button-overlay': isOverlay,
+    'is-ods-button-small': isSmall,
   }, className);
   return <button ref={ref} className={classes} type={type} {...rest}>{children}</button>;
 });

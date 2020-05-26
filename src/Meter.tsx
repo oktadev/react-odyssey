@@ -7,7 +7,7 @@ export type MeterProps = ComponentProps<'meter'> & {
   label?: string;
 };
 
-export const Meter = ({ children, className, label, max, value, ...rest }: MeterProps) => <meter className={classNames("meter", className)}
+export const Meter = ({ children, className, label, max, value, ...rest }: MeterProps) => <meter className={classNames("ods-meter", className)}
   aria-valuemax={ typeof max === 'number' ? max : parseInt(max, 10) }
   aria-valuenow={ typeof value === 'number'
     ? value
@@ -15,7 +15,7 @@ export const Meter = ({ children, className, label, max, value, ...rest }: Meter
       ? value
       : value.join(""), 10) }
   {...rest} max={max} value={value}>
-  <figure className="meter--fallback" aria-label={label}>
+  <figure className="ods-meter--fallback" aria-label={label}>
     { children }
   </figure>
 </meter>;

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export const useFakeId = (id: string | undefined) => {
+export const useAutoId = (id: string | undefined) => {
   const ref = useRef(null);
   if (!ref.current) {
     ref.current = id || `auto-id--${Math.random().toString(36).slice(2)}`;

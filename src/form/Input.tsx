@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode, ComponentProps } from 'react';
 import classNames from 'classnames';
 
-import { useFakeId, isMobilish } from './utils';
+import { useAutoId, isMobilish } from './utils';
 import { FieldSetRaw } from './FieldSet';
 import { LabelMaker } from './Label';
 
@@ -25,13 +25,13 @@ export const InputRaw: React.ComponentType<InputRawProps> = forwardRef<HTMLInput
 InputRaw.displayName = 'InputRaw';
 
 export const InputWithLabel: React.ComponentType<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ aside, autoFocus, children, error, id, label, legend, required=true, ...otherProps }, ref) => {
-  const fakeID = useFakeId(id);
+  id = useAutoId(id);
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
   }
-  return <LabelMaker aside={aside} error={error} htmlFor={fakeID} label={label} legend={legend} optional={!required}>
-    <InputRaw id={fakeID} error={!!error} ref={ref} required={required} autoFocus={autoFocus} {...otherProps} />
+  return <LabelMaker aside={aside} error={error} htmlFor={id} label={label} legend={legend} optional={!required}>
+    <InputRaw id={id} error={!!error} ref={ref} required={required} autoFocus={autoFocus} {...otherProps} />
     { children }
   </LabelMaker>;
 });

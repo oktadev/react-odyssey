@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { FieldSetRaw } from './FieldSet';
 import { LabelMaker, LabelMakerProps } from './Label';
-import { useFakeId, isMobilish } from './utils';
+import { useAutoId, isMobilish } from './utils';
 
 export interface SelectProps extends ComponentProps<'select'>, LabelMakerProps {
   ref?: React.Ref<HTMLSelectElement>;
@@ -18,14 +18,14 @@ SelectRaw.displayName = 'SelectRaw';
 
 
 export const SelectWithLabel = forwardRef<HTMLSelectElement, SelectProps>(({ aside, autoFocus, children, error, id, label, legend, required=true, ...otherProps }, ref) => {
-  const fakeID = useFakeId(id);
+  id = useAutoId(id);
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
   }
 
-  return <LabelMaker aside={aside} error={error} htmlFor={fakeID} label={label} legend={legend} optional={!required}>
-    <SelectRaw autoFocus={autoFocus} id={fakeID} required={required} ref={ref} {...otherProps} error={!!error}>
+  return <LabelMaker aside={aside} error={error} htmlFor={id} label={label} legend={legend} optional={!required}>
+    <SelectRaw autoFocus={autoFocus} id={id} required={required} ref={ref} {...otherProps} error={!!error}>
       { children }
     </SelectRaw>
   </LabelMaker>;

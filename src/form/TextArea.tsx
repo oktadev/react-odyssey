@@ -2,7 +2,7 @@ import React, { forwardRef, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { useFakeId, isMobilish } from './utils';
+import { useAutoId, isMobilish } from './utils';
 import { FieldSetRaw } from './FieldSet';
 import { LabelMakerProps, LabelMaker  } from './Label';
 
@@ -16,14 +16,14 @@ export const TextAreaRaw = forwardRef<HTMLTextAreaElement, TextAreaPropsRaw>(({ 
 TextAreaRaw.displayName = 'TextAreaRaw';
 
 export const TextAreaWithLabel = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ aside, autoFocus, children, error, id, label, legend, required=true, ...otherProps }, ref) => {
-  const fakeID = useFakeId(id);
+  id = useAutoId(id);
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
   }
 
-  return <LabelMaker aside={aside} error={error} htmlFor={fakeID} label={label} legend={legend} optional={!required}>
-    <TextAreaRaw autoFocus={autoFocus} id={fakeID} required={required} ref={ref} {...otherProps} error={!!error} />
+  return <LabelMaker aside={aside} error={error} htmlFor={id} label={label} legend={legend} optional={!required}>
+    <TextAreaRaw autoFocus={autoFocus} id={id} required={required} ref={ref} {...otherProps} error={!!error} />
     { children }
   </LabelMaker>;
 });

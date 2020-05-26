@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FieldSetRaw } from './FieldSet';
 import { InputProps, InputRawProps } from './Input';
 import { LabelMaker } from './Label';
-import { useFakeId, isMobilish } from './utils';
+import { useAutoId, isMobilish } from './utils';
 
 
 export const PasswordRaw: React.ComponentType<InputRawProps> = forwardRef<HTMLInputElement, InputRawProps>(({ className, error, required, ...otherProps }, ref) =>
@@ -12,13 +12,13 @@ export const PasswordRaw: React.ComponentType<InputRawProps> = forwardRef<HTMLIn
 PasswordRaw.displayName = 'PasswordRaw';
 
 export const PasswordWithLabel = forwardRef<HTMLInputElement, InputProps>(({ aside, autoFocus, children, error, id, label, legend, required=true, ...otherProps }, ref) => {
-  const fakeID = useFakeId(id);
+  id = useAutoId(id);
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
   }
-  return <LabelMaker aside={aside} error={error} htmlFor={fakeID} label={label} legend={legend} optional={!required}>
-    <PasswordRaw id={fakeID} data-invalid={error ? true : undefined} ref={ref} autoFocus={autoFocus} {...otherProps} />
+  return <LabelMaker aside={aside} error={error} htmlFor={id} label={label} legend={legend} optional={!required}>
+    <PasswordRaw id={id} data-invalid={error ? true : undefined} ref={ref} autoFocus={autoFocus} {...otherProps} />
     { children }
   </LabelMaker>;
 });

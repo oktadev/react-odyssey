@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FieldSetRaw } from './FieldSet';
 import { InputProps, InputRawProps } from './Input';
 import { UpsideDownLabelMaker } from './Label';
-import { useFakeId, isMobilish } from './utils';
+import { useAutoId, isMobilish } from './utils';
 
 export const RadioRaw = forwardRef<HTMLInputElement, InputRawProps>(({ className, error, ...otherProps }, ref) =>
   <input ref={ref} className={classNames("ods-radio", className)} type="Radio" data-invalid={error ? true : undefined} {...otherProps} /> );
@@ -12,13 +12,13 @@ export const RadioRaw = forwardRef<HTMLInputElement, InputRawProps>(({ className
 RadioRaw.displayName = 'RadioRaw';
 
 export const RadioWithLabel = forwardRef<HTMLInputElement, InputProps>(({ aside, autoFocus, children, error, id, label, legend, ...otherProps }, ref) => {
-  const fakeID = useFakeId(id);
+  id = useAutoId(id);
   if (isMobilish()) {
     // Probably a mobile device. Autofocus will cause virtual keyboard to pop up, so don't do that.
     autoFocus = false;
   }
-  return <UpsideDownLabelMaker aside={aside} className="ods-radio--label" error={error} htmlFor={fakeID} label={label} legend={legend}>
-    <RadioRaw autoFocus={autoFocus} id={fakeID} ref={ref} {...otherProps} />
+  return <UpsideDownLabelMaker aside={aside} className="ods-radio--label" error={error} htmlFor={id} label={label} legend={legend}>
+    <RadioRaw autoFocus={autoFocus} id={id} ref={ref} {...otherProps} />
     { children }
   </UpsideDownLabelMaker>;
 });

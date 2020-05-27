@@ -59,7 +59,7 @@ const webpackConfig = {
           {
             loader: "sass-loader",
             options: {
-              implementation: require('sass'),
+              implementation: require('node-sass'),
               sourceMap: true,
               sassOptions: {
                 fiber: require('fibers'),
@@ -93,7 +93,7 @@ const plugins = [
     chunkFilename: "css/[id].css"
   }),
   new CopyPlugin([
-    { from: './odyssey/src/scss', to: './scss' },
+    { from: './odyssey/packages/odyssey/src/scss', to: './scss' },
   ]),
 ];
 

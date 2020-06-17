@@ -10,6 +10,7 @@ import { PasswordInput, PasswordRaw } from '../Password';
 import { Select, SelectRaw, OptGroup } from '../Select';
 import { TextArea, TextAreaRaw } from '../TextArea';
 import { RadioWithLabel } from '../Radio';
+import { Toggle } from '../Toggle';
 
 class FormWithRefs extends React.Component {
   input = React.createRef<HTMLInputElement>();
@@ -26,6 +27,7 @@ class FormWithRefs extends React.Component {
   radioWithLabel1 = React.createRef<HTMLInputElement>();
   radioWithLabel2 = React.createRef<HTMLInputElement>();
   radioWithLabel3 = React.createRef<HTMLInputElement>();
+  toggle = React.createRef<Toggle>();
 
   click = () => this.setState({
     input: this.input.current?.value,
@@ -42,6 +44,7 @@ class FormWithRefs extends React.Component {
     radioWithLabel1: this.radioWithLabel1.current?.checked,
     radioWithLabel2: this.radioWithLabel2.current?.checked,
     radioWithLabel3: this.radioWithLabel3.current?.checked,
+    toggle: this.toggle.current?.checked,
   });
 
   render () {
@@ -125,6 +128,10 @@ class FormWithRefs extends React.Component {
         <RadioWithLabel label="RadioWithLabel 3" ref={this.radioWithLabel3} name="RadioWithLabel1" value="RadioWithLabel1"/>
       </FieldSet>
       <br/>
+      <hr />
+
+      <Label htmlFor="toggle">Toggle</Label>
+      <Toggle id="toggle" ref={this.toggle}/>
       <pre>
         {
           this.state

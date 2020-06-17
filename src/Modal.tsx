@@ -11,9 +11,9 @@ type ModalEvent = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<El
 export interface ModalProps extends Omit<ComponentProps<'div'>, 'title' | 'ref'> {
   cancellable?: boolean;
   disabled?: boolean;
-  onCancel?: Function;
+  onCancel?: () => any;
   submitBtnTxt?: ReactNode;
-  submit: Function;
+  submit: () => any;
   title?: ReactNode;
   isDanger?: boolean;
 }

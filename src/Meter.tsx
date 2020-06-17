@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, CSSProperties } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export interface MeterProps extends ComponentProps<'meter'> {

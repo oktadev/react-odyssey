@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/cosmos-config",
-  "globalImports": ["odyssey/packages/odyssey/src/scss/odyssey.scss", "src/fixtures.scss"],
+  "globalImports": ["src/react-odyssey.scss", "src/fixtures.scss"],
   "webpack": {
     "configPath": "webpack.config.cosmos.js"
   },

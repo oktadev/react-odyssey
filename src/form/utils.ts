@@ -8,4 +8,4 @@ export const useAutoId = (id: string | undefined) => {
   return ref.current;
 };
 
-export const isMobilish = () => window.matchMedia('(max-width: 800px)').matches;
+export const isMobilish = () => window?.matchMedia('(max-width: 800px)').matches;

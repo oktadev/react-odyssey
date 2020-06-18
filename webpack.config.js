@@ -41,6 +41,7 @@ const webpackConfig = {
     publicPath: '/',
     libraryTarget: 'umd',
     library: 'ReactOdyssey',
+    globalObject: 'typeof self !== "undefined" ? self : this',
   },
   module: {
     rules: [

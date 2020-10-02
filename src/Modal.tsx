@@ -16,6 +16,7 @@ export interface ModalProps extends Omit<ComponentProps<'div'>, 'title' | 'ref'>
   submit: () => any;
   title?: ReactNode;
   isDanger?: boolean;
+  parentselector?(): HTMLElement;
 }
 
 export class Modal extends React.Component<ModalProps> {
@@ -43,9 +44,9 @@ export class Modal extends React.Component<ModalProps> {
 
   public render () {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { cancellable, children, disabled, submitBtnTxt, title, className, submit, isDanger, ...rest } = this.props;
+    const { cancellable, children, disabled, submitBtnTxt, title, parentselector, className, submit, isDanger, ...rest } = this.props;
 
-    return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="ods-modal" style={this.style}>
+    return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="ods-modal" style={this.style} parentSelector={parentselector} >
       <div className={classNames('ods-modal--overlay', className)}  {...rest}>
         <div className="ods-modal--dialog">
           <div className="ods-modal--header">

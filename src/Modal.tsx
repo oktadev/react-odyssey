@@ -60,7 +60,7 @@ export class Modal extends React.Component<ModalProps> {
             <Button isDanger={isDanger} disabled={disabled} onClick={this.submit}>
               { submitBtnTxt }
             </Button>
-            { cancellable && <Button isSecondary isDanger={isDanger} disabled={disabled} onClick={this.close} aria-label="Close">
+            { cancellable && <Button isSecondary isDanger={isDanger} onClick={this.close} aria-label="Close">
               Cancel
             </Button> }
           </footer>

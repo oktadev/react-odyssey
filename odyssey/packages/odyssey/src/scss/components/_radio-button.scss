@@ -1,0 +1,173 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+/* stylelint-disable no-descending-specificity, max-nesting-depth */
+$size-checkbox: 1em / 0.875;
+
+.ods-radio {
+  @include is-visually-hidden;
+
+  &:checked {
+    + .ods-radio--label {
+      &::before {
+        border-color: $color-primary-base;
+        background-color: $color-primary-base;
+      }
+
+      &::after {
+        background: $white;
+      }
+    }
+  }
+
+  &:focus,
+  &.is-ods-radio-focus {
+    + .ods-radio--label {
+      &::before {
+        @include outline($focus-ring-primary, 2px);
+
+        border-color: $color-primary-base;
+      }
+    }
+  }
+
+  &:disabled {
+    + .ods-radio--label {
+      color: $text-body;
+      cursor: not-allowed;
+
+      &::before {
+        border-color: $border-input-disabled;
+        background-color: $bg-input-disabled;
+      }
+    }
+
+    &:checked {
+      + .ods-radio--label {
+        &::before {
+          border-color: $color-primary-light;
+          background-color: $color-primary-light;
+        }
+
+        &::after {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  &[data-invalid] {
+    &:hover:not(:checked) + .ods-radio--label::before {
+      border-color: $color-danger-dark;
+    }
+
+    + .ods-radio--label {
+      color: $text-danger;
+
+      &::before {
+        border-color: $color-danger-base;
+      }
+    }
+
+    &:checked {
+      + .ods-radio--label {
+        &::before {
+          background-color: $color-danger-base;
+        }
+      }
+    }
+
+    &:focus {
+      + .ods-radio--label {
+        &::before {
+          @include outline($focus-ring-danger, 2px);
+
+          border-color: $color-danger-base;
+        }
+      }
+    }
+
+    &:disabled {
+      + .ods-radio--label {
+        color: $text-danger;
+
+        &::before {
+          border-color: $color-danger-base-disabled;
+          background: $white;
+        }
+      }
+
+      &:checked {
+        + .ods-radio--label {
+          &::before {
+            border-color: $color-danger-base-disabled;
+            background-color: $color-danger-base-disabled;
+          }
+
+          &::after {
+            border-color: $color-danger-base-disabled;
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ods-radio--label {
+  display: block;
+  position: relative;
+  margin-bottom: $spacing-xs;
+  padding-left: $size-checkbox + $spacing-s-em;
+  font-size: $size-body-base;
+  font-weight: 400;
+  text-align: left;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $size-checkbox;
+    height: $size-checkbox;
+    transition-property: border-color, background, opacity, box-shadow;
+    transition-duration: $base-duration;
+    transition-timing-function: $base-timing;
+    border: 2px solid transparent;
+    border-radius: 1.125rem;
+  }
+
+  // Box
+  &::before {
+    transform: translateY(-50%);
+    border-color: $border-color-ui;
+  }
+
+  // Check
+  &::after {
+    transform: translateY(-50%) scale(0.4);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:hover,
+  &.is-ods-radio-hover {
+    &::before {
+      border-color: $color-primary-base;
+    }
+  }
+}

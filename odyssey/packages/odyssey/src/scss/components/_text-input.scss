@@ -1,0 +1,44 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.ods-text-input {
+  @include input-baseline;
+
+  &[type='search'] {
+    padding-left: ms(1) + $spacing-s + $spacing-xs;
+    background-image: get-icon('search', $text-body);
+    background-repeat: no-repeat;
+    background-position: left $spacing-s center;
+    background-size: ms(1);
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    &::-ms-clear,
+    &::-ms-reveal {
+      display: none;
+    }
+  }
+}
+
+.ods-text-area {
+  min-width: $spacing-m;
+  max-width: $max-line-length;
+  min-height: $spacing-m * 2;
+  padding: $spacing-xs-em $spacing-s-em $spacing-s-em;
+}

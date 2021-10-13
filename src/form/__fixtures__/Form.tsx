@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../../Button';
+import { Button } from '../../components/Button';
 import { CheckBoxWithLabel, CheckBoxFieldSet } from '../CheckBox';
 import { Aside, FieldSet } from '../FieldSet';
 import { Form, FormTitle, FormHeader, FormHeaderWithTitle, FormActions, FormFooter } from '../Form';
@@ -10,7 +10,7 @@ import { PasswordInput, PasswordRaw } from '../Password';
 import { Select, SelectRaw, OptGroup } from '../Select';
 import { TextArea, TextAreaRaw } from '../TextArea';
 import { RadioWithLabel } from '../Radio';
-import { Toggle } from '../Toggle';
+import { Switch } from '../../components/Switch';
 
 class FormWithRefs extends React.Component {
   input = React.createRef<HTMLInputElement>();
@@ -27,7 +27,7 @@ class FormWithRefs extends React.Component {
   radioWithLabel1 = React.createRef<HTMLInputElement>();
   radioWithLabel2 = React.createRef<HTMLInputElement>();
   radioWithLabel3 = React.createRef<HTMLInputElement>();
-  toggle = React.createRef<Toggle>();
+  toggle = React.createRef<Switch>();
 
   click = () => this.setState({
     input: this.input.current?.value,
@@ -130,8 +130,8 @@ class FormWithRefs extends React.Component {
       <br/>
       <hr />
 
-      <Label htmlFor="toggle">Toggle</Label>
-      <Toggle id="toggle" ref={this.toggle}/>
+      <Label htmlFor="toggle">Switch</Label>
+      <Switch id="toggle" ref={this.toggle}/>
       <pre>
         {
           this.state

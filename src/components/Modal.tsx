@@ -47,22 +47,22 @@ export class Modal extends React.Component<ModalProps> {
     const { cancellable, children, disabled, submitBtnTxt, title, parentselector, className, submit, isDanger, ...rest } = this.props;
 
     return <ReactModal isOpen shouldCloseOnOverlayClick onRequestClose={this.close} className="ods-modal" style={this.style} parentSelector={parentselector} >
-      <div className={classNames('ods-modal--overlay', className)}  {...rest}>
-        <div className="ods-modal--dialog">
+      <div tabIndex={-1} data-micromodal-close className={classNames('ods-modal--overlay', className)} {...rest}>
+        <div role="dialog" aria-modal="true" aria-labelledby="ods-modal-standard-title" className="ods-modal--dialog">
           <div className="ods-modal--header">
             <button className="ods-modal--close" aria-label="Close modal" data-micromodal-close onClick={this.close} />
-            <h1 className="ods-modal--title">{ title }</h1>
+            <h1 className="ods-modal--title" id="ods-modal-standard-title">{ title }</h1>
           </div>
-          <main className="ods-modal--content">
+          <main className="ods-modal--content" id="ods-modal-standard-content">
             { children }
           </main>
           <footer className="ods-modal--footer">
+            { cancellable && <Button isClear isDanger={isDanger} onClick={this.close} data-micromodal-close aria-label="Close this dialog window">
+              Cancel
+            </Button> }
             <Button isDanger={isDanger} disabled={disabled} onClick={this.submit}>
               { submitBtnTxt }
             </Button>
-            { cancellable && <Button isSecondary isDanger={isDanger} onClick={this.close} aria-label="Close">
-              Cancel
-            </Button> }
           </footer>
         </div>
       </div>

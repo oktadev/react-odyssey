@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Toggle } from '../Toggle';
+import { Switch } from '../../components/Switch';
 
 export default {
   // eslint-disable-next-line no-console
-  Toggle: <Toggle defaultChecked checked={undefined} isDanger={false} onChange={(isChecked) => console.log('checked', isChecked)} />,
+  Switch: <Switch defaultChecked checked={undefined} isDanger={false} onChange={(isChecked) => console.log('checked', isChecked)} />,
 };

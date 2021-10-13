@@ -2,10 +2,10 @@ import React, { FunctionComponent, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import errorSVG from '../img/callout-error.svg';
-import infoSVG from '../img/callout-info.svg';
-import pendingSVG from '../img/callout-pending.svg';
-import warningSVG from '../img/callout-warning.svg';
+import errorSVG from '../../odyssey/packages/odyssey-icons/src/error.svg';
+import infoSVG from '../../odyssey/packages/odyssey-icons/src/get-info.svg';
+import pendingSVG from '../../odyssey/packages/odyssey-icons/src/caution.svg';
+import warningSVG from '../../odyssey/packages/odyssey-icons/src/caution.svg';
 
 export type Callouts = "pending" | "info" | "warning" | "error";
 
@@ -46,11 +46,13 @@ export const Callout: FunctionComponent<CalloutProps> = ({ title, isPending, isW
     role={ isError ? 'alert' : undefined}
     {...rest}
   >
-    <img alt={kind} src={ SVGs[kind] } style={{ height: 24, width: 24, marginRight: 8 }} />
+    <div className="ods-callout--icon">
+      <img alt={kind} src={ SVGs[kind] } />
+    </div>
     <div className="ods-callout--content">
-      { title && <h1 className="ods-callout--title">
+      { title && <h3 className="ods-callout--title">
         { title }
-      </h1> }
+      </h3> }
       { children }
     </div>
   </aside>;

@@ -1,0 +1,97 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.ods-callout {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: $max-line-length;
+  margin: 0 0 $spacing-s;
+  padding: $spacing-s $spacing-s $spacing-s calc(#{$spacing-s} + 3px);
+  border: 1px solid $border-color-display;
+  border-radius: $base-border-radius;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    width: 3px;
+    border-radius: $base-border-radius 0 0 $base-border-radius;
+    background-color: $color-caution-base;
+  }
+}
+
+.ods-callout--icon {
+  flex-shrink: 0;
+  width: $spacing-s;
+  height: $spacing-s;
+  margin-right: $spacing-s;
+}
+
+.ods-callout--content {
+  font-size: ms(0);
+
+  ul {
+    list-style-position: inside;
+  }
+}
+
+.ods-callout--title {
+  margin-bottom: $spacing-s;
+  font-size: ms(1);
+  font-weight: 600;
+}
+
+.is-ods-callout-error {
+  &::before {
+    background-color: $color-danger-base;
+  }
+
+  .icon--fill {
+    fill: $color-danger-base;
+  }
+}
+
+.is-ods-callout-pending {
+  &::before {
+    background-color: $color-caution-base;
+  }
+
+  .icon--fill {
+    fill: $color-caution-base;
+  }
+}
+
+.is-ods-callout-warning {
+  &::before {
+    background-color: $color-caution-base;
+  }
+
+  .icon--fill {
+    fill: $color-caution-base;
+  }
+}
+
+.is-ods-callout-help {
+  &::before {
+    background-color: $color-primary-base;
+  }
+
+  .icon--fill {
+    fill: $color-primary-base;
+  }
+}

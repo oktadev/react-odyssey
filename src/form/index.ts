@@ -7,4 +7,3 @@ export * from './Password';
 export * from './Radio';
 export * from './Select';
 export * from './TextArea';
-export * from './Toggle';

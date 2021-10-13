@@ -1,19 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface ToggleProps extends Omit<React.ComponentProps<'button'>, 'onChange'|'ref'> {
+interface SwitchProps extends Omit<React.ComponentProps<'button'>, 'type'|'role'|'onChange'|'ref'> {
   defaultChecked?: boolean;
   checked?: boolean;
   isDanger?: boolean;
   onChange?: (isChecked: boolean) => void;
 }
 
-type ToggleState = {
+type SwitchState = {
   isChecked: boolean;
 };
 
-export class Toggle extends React.Component<ToggleProps, ToggleState> {
-  state: ToggleState = {
+export class Switch extends React.Component<SwitchProps, SwitchState> {
+  state: SwitchState = {
     isChecked: this.props.checked ?? this.props.defaultChecked,
   };
 
@@ -25,7 +25,7 @@ export class Toggle extends React.Component<ToggleProps, ToggleState> {
     this.setState({ isChecked });
   }
 
-  componentDidUpdate (prevProps: ToggleProps, prevState: ToggleState) {
+  componentDidUpdate (prevProps: SwitchProps, prevState: SwitchState) {
     if (prevState.isChecked !== this.state.isChecked) {
       this.props.onChange?.(this.state.isChecked);
     }
@@ -34,14 +34,16 @@ export class Toggle extends React.Component<ToggleProps, ToggleState> {
   toggle = () => this.setState({ isChecked: !this.state.isChecked });
 
   render () {
-    /* eslint @typescript-eslint/no-unused-vars: ["error", { "ignoreRestSiblings": true }] */
-    const { onClick, checked, isDanger, onChange, className: cn, ...props } = this.props;
+    const { onClick, checked, isDanger, onChange, className, ...props } = this.props;
     const isChecked = checked ?? this.state.isChecked;
-    const className = classNames(cn, 'odious-toggle', {
-      'checked': isChecked,
+    const classes = classNames(className, 'ods-switch', {
       isDanger,
     });
-    return <button {...props} role="switch" aria-checked={isChecked} type="button" className={className} onClick={onClick ?? this.toggle}>
-    </button>;
+    return (
+      <button type="button" role="switch" {...props} aria-checked={isChecked} className={classes} onClick={onClick ?? this.toggle}>
+        <span className="ods-switch--dial" />
+        <span className="ods-switch--dial" />
+      </button>
+    );
   }
 }

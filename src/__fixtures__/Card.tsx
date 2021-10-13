@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card } from '../Card';
-import { Button } from '../Button';
+import { Button } from '../components/Button';
 
 
 const CardActions = <>

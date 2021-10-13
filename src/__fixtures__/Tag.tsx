@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { Tags } from '../Tag';
+import { Tags } from '../components/Tag';
 
-const d = <h1>d</h1>;
-
-export default <Tags tags={['a', 'b', 'c', d]}>
-  I am status.
-</Tags>;
+export default <>
+  Radiation <Tags tags={['alpha', 'beta', 'gamma']}/>
+</>;
 

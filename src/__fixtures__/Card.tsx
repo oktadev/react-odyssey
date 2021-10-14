@@ -40,6 +40,7 @@ export default <>
     </Card>
   </div>
 
+  <h4>This is an old-style card</h4>
   <OldCard
     title="Computer Overheated!"
     meta="Thermite may have been involved"

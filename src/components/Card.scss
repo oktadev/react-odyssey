@@ -1,0 +1,74 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+@import "../react-odyssey";
+
+.card {
+  border: 1px solid $border-color-display;
+  border-radius: $base-border-radius;
+  background: $white;
+  align-self: stretch;
+
+  &--error {
+    padding: $spacing-s;
+    background: $bg-input-disabled;
+    border: 1px dashed $border-input-disabled;
+    border-radius: $base-border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-message {
+      display: flex;
+      flex-direction: column;
+
+      > span {
+        text-align: center;
+        color: $text-body;
+      }
+
+      &-heading {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &--header {
+    height: 2 * $spacing-m + $spacing-xs;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 $spacing-m;
+    border-bottom: 1px solid $border-color-display;
+
+    > :last-child:not(:only-child) {
+      margin-left: auto;
+    }
+  }
+
+  &--title {
+    color: $text-heading;
+    font-size: $size-title-3;
+    font-weight: 600;
+
+    &.loading {
+      color: $bg-input-disabled;
+    }
+  }
+
+  &--main {
+    min-height: 3rem;
+  }
+}

@@ -1,6 +1,7 @@
 // Include these so webpack bundles and processes them
 export * from './components/Button';
 export * from './components/Callout';
+export * as CardV2 from './components/Card';
 export * from './Card';
 export * from './form/index';
 export * from './components/Links';

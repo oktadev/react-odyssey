@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Card as OldCard } from '../Card';
-import { Card } from '../components/Card';
-import { InternalA } from '../components/Links';
+import { Card } from '../Card';
 import { Button } from '../components/Button';
 
 
@@ -17,36 +15,12 @@ const icon = <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/
 </svg>;
 
 export default <>
-  <Card heading="This is a default card">
-    This area is reserved for children. No smoking.
-  </Card>
-  <br/>
-  <Card heading="This card is loading" loading>
-    This area is reserved for children. No smoking.
-  </Card>
-  <br/>
-  <Card heading="This card has action" action={<InternalA href="another/place">Go somewhere else</InternalA>}>
-    This area is reserved for children. No smoking.
-  </Card>
-  <br/>
-
-  <h4>Cards should go in grids with gaps or in flex containers</h4>
-  <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "minmax(476px,1fr) minmax(476px,1fr)", marginBottom: "1rem" }}>
-    <Card heading="Card 1">
-      This area is reserved for children. No smoking.
-    </Card>
-    <Card heading="Card 2" loading>
-      This area is reserved for children. No smoking.
-    </Card>
-  </div>
-
-  <h4>This is an old-style card</h4>
-  <OldCard
+  <Card
     title="Computer Overheated!"
     meta="Thermite may have been involved"
     src="https://geoff.greer.fm/photos/thermite/thumbs/P1010014_crop.jpg"
     icon={icon}
     actions={CardActions}>
     This card is about a computer getting thermited.
-  </OldCard>
+  </Card>
 </>;

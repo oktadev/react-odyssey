@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface SwitchProps extends Omit<React.ComponentProps<'button'>, 'type'|'role'|'onChange'|'ref'> {
+export interface SwitchProps extends Omit<React.ComponentProps<'button'>, 'type'|'role'|'onChange'|'ref'> {
   defaultChecked?: boolean;
   checked?: boolean;
   isDanger?: boolean;

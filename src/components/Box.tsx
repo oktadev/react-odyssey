@@ -1,9 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
-import './Card.scss';
+import './Box.scss';
 
-type CardProps = {
+type BoxProps = {
   heading: string;
   loading?: boolean;
   action?: ReactNode;
@@ -13,7 +13,7 @@ type CardProps = {
   'data-se'?: string;
 };
 
-const BaseCard: FunctionComponent<CardProps> = (props) => {
+const BaseBox: FunctionComponent<BoxProps> = (props) => {
   const { heading, children = <></>, action, loading, ...restProps } = props;
   const selectorTitle = heading.replace(/\s+/g, '-').toLowerCase();
   const dataSe = restProps['data-se']
@@ -32,4 +32,4 @@ const BaseCard: FunctionComponent<CardProps> = (props) => {
   );
 };
 
-export const Card = BaseCard;
+export const Box = BaseBox;

@@ -1,0 +1,162 @@
+// Copyright 2018-Present Okta, Inc.
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.ods-card {
+  display: block;
+  position: relative;
+  align-self: start;
+  max-width: $max-line-length;
+  border: 1px solid $border-color-display;
+  border-radius: $base-border-radius;
+}
+
+.ods-card--state {
+  margin: -1px -1px 0;
+  padding: $spacing-xs $spacing-m;
+  border-radius: $base-border-radius $base-border-radius 0 0;
+  color: $white;
+  font-size: ms(-2);
+  text-align: right;
+}
+
+.ods-card--media {
+  margin: -1px -1px 0;
+  padding-bottom: $spacing-s;
+  overflow: hidden;
+  border-radius: $base-border-radius $base-border-radius 0 0;
+}
+
+.ods-card--media-image {
+  width: 100%;
+}
+
+.ods-card--header {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  padding: $spacing-s $spacing-m $spacing-s;
+
+  &:first-child {
+    padding-top: $spacing-m;
+  }
+
+  &:last-child {
+    padding-bottom: $spacing-m;
+  }
+
+  .ods-card--state + & {
+    padding-top: $spacing-m;
+  }
+}
+
+.ods-card--header-icon {
+  flex-basis: auto;
+  height: $spacing-l;
+  margin-right: $spacing-s;
+  line-height: 1;
+
+  svg {
+    height: 100%;
+  }
+}
+
+.ods-card--header-main {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.ods-card--meta {
+  color: $text-sub;
+  font-size: ms(-1);
+}
+
+.ods-card--kebab {
+  position: absolute;
+  top: $spacing-m;
+  right: $spacing-m;
+}
+
+.ods-card--title {
+  margin: 0 0 $spacing-xs 0;
+  font-size: ms(1);
+  font-weight: 600;
+  line-height: $title-line-height;
+
+  &:only-child {
+    margin-bottom: 0;
+  }
+}
+
+.ods-card--main {
+  padding: $spacing-s $spacing-m $spacing-s;
+  color: $text-body;
+
+  &:first-child {
+    padding-top: $spacing-m + $spacing-xs;
+  }
+
+  &:last-child {
+    padding-bottom: $spacing-m;
+  }
+}
+
+.ods-card--footer {
+  padding: $spacing-s $spacing-m $spacing-m;
+}
+
+.ods-card--actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ods-card--link {
+  color: $color-primary-base;
+}
+
+.is-ods-card-action {
+  .ods-card--state {
+    background: $color-primary-base;
+  }
+}
+
+.is-ods-card-error {
+  .ods-card--state {
+    background: $color-danger-base;
+  }
+}
+
+.is-ods-card-clickable {
+  transition: box-shadow $base-duration $base-timing;
+  border: 0;
+  box-shadow: 0 3px 6px rgba($border-color-ui, 0.2);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba($border-color-ui, 0.2);
+  }
+
+  &:active {
+    background: $bg-input-disabled;
+  }
+}
+
+.ods-card--list {
+  display: grid;
+  grid-auto-rows: minmax(0, auto);
+  grid-gap: $spacing-m;
+  grid-template-columns: repeat(auto-fill, minmax(calc(17em), 1fr));
+}

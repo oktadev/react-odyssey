@@ -31,7 +31,7 @@ export default <>
   <br/>
 
   <h4>Cards should go in grids with gaps or in flex containers</h4>
-  <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "minmax(476px,1fr) minmax(476px,1fr)", marginBottom: "1rem"}}>
+  <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "minmax(476px,1fr) minmax(476px,1fr)", marginBottom: "1rem" }}>
     <Card heading="Card 1">
       This area is reserved for children. No smoking.
     </Card>

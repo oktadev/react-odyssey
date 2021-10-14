@@ -33,9 +33,9 @@ export const StyledHeader: FunctionComponent<StyledHeaderProps> = (props) => {
     <div {...restProps} className={classes}>
       { ! isSecondary && <h1 className={titleClasses}>{title}</h1> }
       { isSecondary && <h2 className={titleClasses}>{title}</h2> }
-      { subtitle && (
+      { subtitle &&
         <div className={`${block}__subtitle`}>{subtitle}</div>
-      ) }
+      }
     </div>
   );
 };

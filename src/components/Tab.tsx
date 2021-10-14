@@ -114,20 +114,24 @@ const Tabs: FunctionComponent<Props> & StaticComponents = ({
   return (
     <Tabs.Container id={oid} ariaLabel={ariaLabel}>
       <Tabs.List ref={tabListRef} onKeyUp={handleTabListKeyUp}>
-        {children.map(({ props: { label, id } }) =>
-          <Tabs.Tab
-            id={`${id}-tab`}
-            key={`${id}-tab`}
-            ariaControls={id}
-            selected={id === selectedTabId}
-            onClick={() => handleTabChange(id)}
-          >
-            {label}
-          </Tabs.Tab>
-        )}
+        {
+          // eslint-disable-next-line no-shadow
+          children.map(({ props: { label, id } }) =>
+            <Tabs.Tab
+              id={`${id}-tab`}
+              key={`${id}-tab`}
+              ariaControls={id}
+              selected={id === selectedTabId}
+              onClick={() => handleTabChange(id)}
+            >
+              {label}
+            </Tabs.Tab>
+          )
+        }
       </Tabs.List>
       <Tabs.PanelContainer>
         {children.map(
+          // eslint-disable-next-line no-shadow
           ({ props: { label, id, children: tabLabelChildren } }) =>
             <Tabs.Panel
               label={label}
@@ -152,7 +156,7 @@ Tabs.Container = function TabsContainer ({ children, id, ariaLabel }) {
 };
 
 Tabs.List = forwardRef<HTMLDivElement, PropsTabsList>(
-  ({ children, onKeyUp }, ref) => (
+  ({ children, onKeyUp }, ref) =>
     <div
       tabIndex={-1}
       role="tablist"
@@ -163,8 +167,8 @@ Tabs.List = forwardRef<HTMLDivElement, PropsTabsList>(
     >
       {children}
     </div>
-  )
 );
+Tabs.List.displayName = 'Hello';
 
 Tabs.Tab = function TabsTab ({ children, id, ariaControls, selected, onClick }) {
   return (

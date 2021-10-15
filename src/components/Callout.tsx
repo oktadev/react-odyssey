@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import errorSVG from '../../odyssey/packages/odyssey-icons/src/error.svg';
 import infoSVG from '../../odyssey/packages/odyssey-icons/src/get-info.svg';
-import pendingSVG from '../../odyssey/packages/odyssey-icons/src/caution.svg';
 import warningSVG from '../../odyssey/packages/odyssey-icons/src/caution.svg';
 
 export type Callouts = "pending" | "info" | "warning" | "error";
@@ -12,7 +11,7 @@ export type Callouts = "pending" | "info" | "warning" | "error";
 type SVGs_ = { [K in Callouts]: string };
 
 const SVGs: SVGs_ = {
-  pending: pendingSVG,
+  pending: warningSVG,
   info: infoSVG,
   warning: warningSVG,
   error: errorSVG,

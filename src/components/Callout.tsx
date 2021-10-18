@@ -22,9 +22,10 @@ export interface CalloutProps extends Omit<ComponentProps<'aside'>, 'title'> {
   isWarning?: boolean;
   isError?: boolean;
   title?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
-export const Callout: FunctionComponent<CalloutProps> = ({ title, isPending, isWarning, isError, children, className, ...rest }) => {
+export const Callout: FunctionComponent<CalloutProps> = ({ title, icon, isPending, isWarning, isError, children, className, ...rest }) => {
   let kind: Callouts = 'info';
   if (isPending) {
     kind = 'pending';
@@ -46,7 +47,7 @@ export const Callout: FunctionComponent<CalloutProps> = ({ title, isPending, isW
     {...rest}
   >
     <div className="ods-callout--icon">
-      <img alt={kind} src={ SVGs[kind] } />
+      {icon || <img alt={kind} src={SVGs[kind]}/>}
     </div>
     <div className="ods-callout--content">
       { title && <h3 className="ods-callout--title">
@@ -65,4 +66,5 @@ Callout.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.node,
+  icon: PropTypes.node,
 };

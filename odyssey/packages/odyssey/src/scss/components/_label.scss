@@ -17,26 +17,27 @@
   align-items: flex-end;
   justify-content: space-between;
   color: $text-heading;
-  font-size: ms(0);
   font-weight: 600;
 
   .ods-text-input:disabled ~ &,
   .ods-text-input[readonly] ~ & {
-    color: $text-sub;
+    color: $text-body;
+  }
+
+  .ods-text-input[type='search'] ~ & {
+    @include is-visually-hidden;
   }
 }
 
 .ods-label--optional {
-  // KANS
-  // display: block;
+  display: none;
   color: $text-sub;
-  font-size: ms(-1);
+  font-size: $size-body-caption;
   font-weight: 400;
-  line-height: $base-spacing; // Helps optically match line-height above
+  line-height: $spacing-m; // Helps optically match line-height above
 
-  // KANS
-  // [data-optional] &,
-  // :optional ~ .ods-label & {
-  //   display: block;
-  // }
+  [data-optional] &,
+  :optional ~ .ods-label & {
+    display: block;
+  }
 }

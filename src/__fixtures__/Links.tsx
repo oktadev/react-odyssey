@@ -1,5 +1,14 @@
 import React from 'react';
 
-import { ExternalA } from '../Links';
+import { ExternalA, InternalA } from '../components/Links';
 
-export default <ExternalA href="https://github.com">https://github.com</ExternalA>;
+export default <>
+  <h4>Internal links</h4>
+  <p>
+    <InternalA href="some/resource">View your resource</InternalA>
+  </p>
+  <h4>External links</h4>
+  <p>
+    <ExternalA href="https://github.com">https://github.com</ExternalA>
+  </p>
+</>;

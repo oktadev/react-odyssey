@@ -18,9 +18,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   max-width: $max-line-length;
-  margin: 0 0 $base-spacing;
-  padding: $base-spacing $base-spacing $base-spacing calc(#{$base-spacing} + 3px);
-  border: 1px solid $base-border-color;
+  margin: 0 0 $spacing-s;
+  padding: $spacing-s $spacing-s $spacing-s calc(#{$spacing-s} + 3px);
+  border: 1px solid $border-color-display;
   border-radius: $base-border-radius;
 
   &::before {
@@ -31,15 +31,15 @@
     left: -1px;
     width: 3px;
     border-radius: $base-border-radius 0 0 $base-border-radius;
-    background-color: cv('caution', 'base');
+    background-color: $color-caution-base;
   }
 }
 
 .ods-callout--icon {
   flex-shrink: 0;
-  width: $base-spacing;
-  height: $base-spacing;
-  margin-right: $small-spacing;
+  width: $spacing-s;
+  height: $spacing-s;
+  margin-right: $spacing-s;
 }
 
 .ods-callout--content {
@@ -51,47 +51,47 @@
 }
 
 .ods-callout--title {
-  margin-bottom: $base-spacing;
+  margin-bottom: $spacing-s;
   font-size: ms(1);
   font-weight: 600;
 }
 
 .is-ods-callout-error {
   &::before {
-    background-color: cv('danger', 'base');
+    background-color: $color-danger-base;
   }
 
   .icon--fill {
-    fill: cv('danger', 'base');
+    fill: $color-danger-base;
   }
 }
 
 .is-ods-callout-pending {
   &::before {
-    background-color: cv('caution', 'base');
+    background-color: $color-caution-base;
   }
 
   .icon--fill {
-    fill: cv('caution', 'base');
+    fill: $color-caution-base;
   }
 }
 
 .is-ods-callout-warning {
   &::before {
-    background-color: cv('caution', 'base');
+    background-color: $color-caution-base;
   }
 
   .icon--fill {
-    fill: cv('caution', 'base');
+    fill: $color-caution-base;
   }
 }
 
 .is-ods-callout-help {
   &::before {
-    background-color: cv('action', 'base');
+    background-color: $color-primary-base;
   }
 
   .icon--fill {
-    fill: cv('action', 'base');
+    fill: $color-primary-base;
   }
 }

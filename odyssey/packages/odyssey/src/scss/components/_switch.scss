@@ -27,61 +27,65 @@
 .ods-switch {
   display: inline-flex;
   align-items: center;
-  height: $base-spacing; // match line-height of label
+  height: $spacing-m; // match line-height of label
   margin-left: auto;
   padding: 0.28em;
   transition: all 300ms ease-in-out;
-  border-radius: $small-spacing;
+  border-radius: $spacing-s;
   vertical-align: middle;
 
   .ods-switch--dial {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: cv('gray', '100');
+    background: $border-color-display;
   }
 
   &:disabled {
-    opacity: $med-opaque;
+    opacity: .5;
     pointer-events: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.25rem cv('action', 'lightest');
+    box-shadow: 0 0 0 0.25rem $focus-ring-primary;
   }
 }
 
+.ods-switch {
+  border-width: 0px;
+}
+
 .ods-switch[aria-checked='false'] {
-  background: cv('gray', '500');
+  background: $border-color-ui;
 
   .ods-switch--dial {
     background: url('data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M6%209C7.65685%209%209%207.65685%209%206C9%204.34315%207.65685%203%206%203C4.34315%203%203%204.34315%203%206C3%207.65685%204.34315%209%206%209ZM6%2011C8.76142%2011%2011%208.76142%2011%206C11%203.23858%208.76142%201%206%201C3.23858%201%201%203.23858%201%206C1%208.76142%203.23858%2011%206%2011Z%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%3C%2Fsvg%3E%0A') no-repeat center;
   }
 
   &:hover {
-    background: cv('gray', '600');
+    background: $text-body;
   }
 }
 
 .ods-switch[aria-checked='true'] {
-  background: cv('action', 'base');
+  background: $color-primary-base;
 
   .ods-switch--dial {
     background: url('data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M5%2011L5%201L7%201L7%2011L5%2011Z%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%3C%2Fsvg%3E%0A') no-repeat center;
   }
 
   &:hover {
-    background-color: cv('action', 'dark');
+    background-color: $color-primary-dark;
   }
 }
 
 .ods-switch[aria-checked='false'] :first-child,
 .ods-switch[aria-checked='true'] :last-child {
-  background: cv('gray', '000');
+  background: $bg-input-disabled;
 }
 
 .ods-switch[aria-checked='false'] :last-child,
 .ods-switch[aria-checked='true'] :first-child {
-  color: cv('gray', '000');
+  color: $bg-input-disabled;
 }

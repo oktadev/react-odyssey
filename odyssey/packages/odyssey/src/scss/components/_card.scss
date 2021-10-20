@@ -17,13 +17,13 @@
   position: relative;
   align-self: start;
   max-width: $max-line-length;
-  border: 1px solid $base-border-color;
+  border: 1px solid $border-color-display;
   border-radius: $base-border-radius;
 }
 
 .ods-card--state {
   margin: -1px -1px 0;
-  padding: $tiny-spacing $base-spacing;
+  padding: $spacing-xs $spacing-m;
   border-radius: $base-border-radius $base-border-radius 0 0;
   color: $white;
   font-size: ms(-2);
@@ -32,7 +32,7 @@
 
 .ods-card--media {
   margin: -1px -1px 0;
-  padding-bottom: $small-spacing;
+  padding-bottom: $spacing-s;
   overflow: hidden;
   border-radius: $base-border-radius $base-border-radius 0 0;
 }
@@ -46,25 +46,25 @@
   position: relative;
   align-items: center;
   justify-content: flex-start;
-  padding: $small-spacing $base-spacing $small-spacing;
+  padding: $spacing-s $spacing-m $spacing-s;
 
   &:first-child {
-    padding-top: $base-spacing;
+    padding-top: $spacing-m;
   }
 
   &:last-child {
-    padding-bottom: $base-spacing;
+    padding-bottom: $spacing-m;
   }
 
   .ods-card--state + & {
-    padding-top: $base-spacing;
+    padding-top: $spacing-m;
   }
 }
 
 .ods-card--header-icon {
   flex-basis: auto;
-  height: $big-spacing;
-  margin-right: $small-spacing;
+  height: $spacing-l;
+  margin-right: $spacing-s;
   line-height: 1;
 
   svg {
@@ -85,15 +85,15 @@
 
 .ods-card--kebab {
   position: absolute;
-  top: $base-spacing;
-  right: $base-spacing;
+  top: $spacing-m;
+  right: $spacing-m;
 }
 
 .ods-card--title {
-  margin: 0 0 $tiny-spacing 0;
+  margin: 0 0 $spacing-xs 0;
   font-size: ms(1);
   font-weight: 600;
-  line-height: $heading-line-height;
+  line-height: $title-line-height;
 
   &:only-child {
     margin-bottom: 0;
@@ -101,20 +101,20 @@
 }
 
 .ods-card--main {
-  padding: $small-spacing $base-spacing $small-spacing;
+  padding: $spacing-s $spacing-m $spacing-s;
   color: $text-body;
 
   &:first-child {
-    padding-top: $base-spacing + $tiny-spacing;
+    padding-top: $spacing-m + $spacing-xs;
   }
 
   &:last-child {
-    padding-bottom: $base-spacing;
+    padding-bottom: $spacing-m;
   }
 }
 
 .ods-card--footer {
-  padding: $small-spacing $base-spacing $base-spacing;
+  padding: $spacing-s $spacing-m $spacing-m;
 }
 
 .ods-card--actions {
@@ -123,40 +123,40 @@
 }
 
 .ods-card--link {
-  color: cv('action', 'base');
+  color: $color-primary-base;
 }
 
 .is-ods-card-action {
   .ods-card--state {
-    background: cv('action', 'base');
+    background: $color-primary-base;
   }
 }
 
 .is-ods-card-error {
   .ods-card--state {
-    background: cv('danger', 'base');
+    background: $color-danger-base;
   }
 }
 
 .is-ods-card-clickable {
   transition: box-shadow $base-duration $base-timing;
   border: 0;
-  box-shadow: 0 3px 6px rgba(cv('gray', '900'), 0.2);
+  box-shadow: 0 3px 6px rgba($border-color-ui, 0.2);
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 6px 24px rgba(cv('gray', '900'), 0.2);
+    box-shadow: 0 6px 24px rgba($border-color-ui, 0.2);
   }
 
   &:active {
-    background: cv('gray', '000');
+    background: $bg-input-disabled;
   }
 }
 
 .ods-card--list {
   display: grid;
   grid-auto-rows: minmax(0, auto);
-  grid-gap: $base-spacing;
+  grid-gap: $spacing-m;
   grid-template-columns: repeat(auto-fill, minmax(calc(17em), 1fr));
 }

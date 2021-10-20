@@ -12,43 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-.ods-tabs {
-  --ods-tabs-indicator-width: 0;
-  --ods-tabs-indicator-pos-x: 0;
-}
-
 .ods-tabs--tablist {
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    bottom: -1px;
-    left: var(--ods-tabs-indicator-pos-x);
-    width: var(--ods-tabs-indicator-width);
-    height: 3px;
-    transition: left 230ms ease-in-out, width 230ms ease-in-out;
-    background: cv('action', 'base');
-  }
+  border-bottom: 1px solid $border-color-display;
 }
 
 .ods-tabs--tab {
   display: inline-block;
   position: relative;
   margin: 0;
-  padding: $small-spacing $base-spacing;
+  padding: $spacing-s $spacing-s;
   border: 0;
   background: none;
   color: $text-body;
   font-family: inherit;
-  font-size: ms(0);
+  font-size: $size-body-sentence;
   font-weight: 600;
+
+  &[aria-selected='true'] {
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $color-primary-base;
+    }
+  }
 }
 
 .ods-tabs--tabpanel [role='tabpanel'] {
-  padding: $base-spacing 0;
-  border-top: 1px solid $base-border-color;
+  padding: $spacing-l 0;
 
   &:focus {
     outline: none;

@@ -12,31 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-$a-hover: cv('action', 'dark') !default;
-$a-visited: cv('violet', 'dark') !default;
-
-a{
-  color: cv('action');
+a {
+  color: cv('blue', '500');
+  text-decoration: none;
 
   &:hover {
-    color: $a-hover;
+    color: cv('blue', '500');
+    text-decoration: underline;
   }
 
   &:visited {
-    // KANS
-    // color: $a-visited;
+    color: cv('blue', '500');
   }
 
   /* stylelint-disable selector-no-qualifying-type */
   &[target='_blank']:not([href^='mailto:'])::after {
     content: '';
     display: inline-block;
+    position: relative;
+    top: -0.1em;
     width: 1em;
     height: 1em;
     margin-left: 0.2em;
-    background-image: get-icon('external', cv('action', 'base'));
+    background-image: get-icon('external', $color-primary-base);
     background-repeat: no-repeat;
     vertical-align: middle;
   }
+
   /* stylelint-enable */
+}
+
+.ods-link--has-icon {
+  display: inline-grid;
+  grid-auto-columns: minmax(min-content, max-content);
+  grid-auto-flow: column;
+  grid-gap: $spacing-xs;
+  align-items: center;
 }

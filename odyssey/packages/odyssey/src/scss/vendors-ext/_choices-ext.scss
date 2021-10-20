@@ -9,19 +9,20 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   position: relative;
   max-width: $max-line-length;
   overflow: hidden;
-  font-size: ms(0);
+  font-size: $size-body-base;
 
   &:focus,
-  &.is-ods-select-focused {
+  &.is-ods-select-focused,
+  .is-ods-select-focus & {
     border-radius: $base-border-radius;
     outline: none;
-    box-shadow: 0 0 0 4px fauxpacity(cv('action', 'base'));
+    box-shadow: 0 0 0 4px $color-primary-light;
 
     &.is-ods-select-open {
-      box-shadow: 0 0 0 4px fauxpacity(cv('action', 'base')), 0 2px 0 4px fauxpacity(cv('action', 'base'));
+      box-shadow: 0 0 0 4px $color-primary-light, 0 2px 0 4px $color-primary-light;
 
       &.is-ods-select-flipped {
-        box-shadow: 0 0 0 4px fauxpacity(cv('action', 'base')), 0 -2px 0 4px fauxpacity(cv('action', 'base'));
+        box-shadow: 0 0 0 4px $color-primary-light, 0 -2px 0 4px $color-primary-light;
       }
     }
   }
@@ -37,14 +38,14 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   &.is-ods-select-disabled {
     .ods-select--inner,
     .ods-select--input {
-      border-color: cv('gray', '200');
-      background: cv('gray', '000');
+      border: 1px solid $border-input-disabled;
+      background-color: $bg-input-disabled;
       color: $text-sub;
       cursor: not-allowed;
       user-select: none;
 
       &:hover {
-        border-color: cv('gray', '200');
+        border-color: $border-color-ui;
       }
     }
 
@@ -61,22 +62,23 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   [data-invalid] & {
     &:focus,
     &.is-ods-select-focused {
+      @include outline($focus-ring-danger);
+
       border-radius: $base-border-radius;
       outline: none;
-      box-shadow: 0 0 0 4px fauxpacity(cv('danger', 'base'));
 
       &.is-ods-select-open {
-        box-shadow: 0 0 0 4px fauxpacity(cv('danger', 'base')), 0 2px 0 4px fauxpacity(cv('danger', 'base'));
+        box-shadow: 0 0 0 4px $color-danger-light, 0 2px 0 4px $color-danger-light;
 
         &.is-ods-select-flipped {
-          box-shadow: 0 0 0 4px fauxpacity(cv('danger', 'base')), 0 -2px 0 4px fauxpacity(cv('danger', 'base'));
+          box-shadow: 0 0 0 4px $color-danger-light, 0 -2px 0 4px $color-danger-light;
         }
       }
     }
 
     .ods-select--inner,
     .ods-select--input {
-      border-color: cv('danger');
+      border-color: $color-danger-base;
     }
   }
 
@@ -85,18 +87,16 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   }
 }
 
-.ods-select[data-type*='select-one'] {
-  .ods-select--inner {
-    padding-bottom: $tiny-spacing;
-  }
-
+.ods-select[data-type*='select-one'],
+.ods-select[data-type*='select-multiple'] {
   .ods-select--input {
-    display: block;
+    display: inline-block;
     width: 100%;
-    margin: 0;
-    padding: $small-spacing;
-    border-bottom: 1px solid $base-border-color;
-    background-color: $white;
+    margin: 0 0 $spacing-xs;
+    padding: 0;
+    border-bottom: 0;
+    background-color: transparent;
+    vertical-align: top;
   }
 
   .ods-select--button {
@@ -105,7 +105,7 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
     right: 0;
     width: 20px;
     height: 20px;
-    margin-top: -$small-spacing;
+    margin-top: -$spacing-s;
     margin-right: 25px;
     padding: 0;
     border-radius: 10em;
@@ -119,7 +119,7 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px cv('action', 'base');
+      @include outline($focus-ring-primary);
     }
   }
 
@@ -131,13 +131,13 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
     content: '';
     position: absolute;
     top: 50%;
-    right: $em-small-spacing;
-    width: ms(-1);
-    height: ms(-1);
+    right: $spacing-s-em;
+    width: $size-body-caption;
+    height: $size-body-caption;
     transform: translateY(-50%);
     background-image: get-icon('caret', $text-body);
     background-repeat: no-repeat;
-    background-size: ms(-1);
+    background-size: $size-body-caption;
     pointer-events: none;
   }
 
@@ -162,31 +162,40 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   }
 }
 
+.ods-select[data-type*='select-one'] {
+  .ods-select--button {
+    display: none; // remove this functionality for Single Select, unavailable via JS
+  }
+}
+
 .ods-select[data-type*='select-multiple'],
 .ods-select[data-type*='text'] {
   .ods-select--inner {
+    padding-bottom: 0;
     cursor: text;
   }
 
   .ods-select--button {
     display: inline-block;
     position: relative;
-    width: $choices-button-dimension;
+    width: 1em;
+    height: 1em;
     margin-top: 0;
-    margin-right: -$choices-button-offset/2;
+    margin-right: 0;
     margin-bottom: 0;
-    margin-left: $choices-button-offset;
-    padding-left: $choices-button-offset * 2;
-    border-left: 1px solid darken(cv('action', 'base'), 10%);
-    border-radius: 0;
-    opacity: 0.75;
-    background-image: $choices-icon-cross;
-    background-size: $choices-button-dimension;
+    margin-left: $spacing-s;
+    padding: 0;
+    border-radius: 100%;
+    opacity: 1;
+    background-color: cv('blue', '400');
+    background-image: get-icon('close', $white);
+    background-position: center;
+    background-size: ($base-line-height * 1em) - 1em; // funky math to evade half-pixel rounding errors
     line-height: 1;
 
     &:hover,
     &:focus {
-      opacity: 1;
+      background-color: $color-primary-base;
     }
   }
 }
@@ -194,38 +203,40 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
 .ods-select--inner {
   display: inline-block;
   width: 100%;
-  padding: $em-tiny-spacing $em-small-spacing;
+  padding: $spacing-xs-em $spacing-s-em;
   overflow: hidden;
   transition-property: border-color, background-color, box-shadow;
   transition-duration: $base-duration;
   transition-timing-function: $base-timing;
-  border: 1px solid $base-border-color;
+  border: 1px solid $border-color-ui;
   border-radius: $base-border-radius;
   background-color: $white;
-  box-shadow: 0 0 0 0 fauxpacity(cv('action', 'base'));
+  box-shadow: 0 0 0 0 $color-primary-light;
   color: $text-body;
   font-family: $body-font-family;
-  font-size: ms(0);
+  font-size: $size-body-base;
   line-height: $base-line-height;
   vertical-align: top;
 
   &:hover,
   .is-ods-select-focused &,
-  .is-ods-select-open & {
-    border-color: cv('action', 'base');
+  .is-ods-select-open &,
+  .is-ods-select-focus &,
+  .is-ods-select-hover & {
+    border-color: $color-primary-base;
   }
 
   .is-ods-select-open &,
   [data-invalid] .is-ods-select-open & {
     border-radius: $base-border-radius $base-border-radius 0 0;
-    border-bottom-color: $base-border-color;
+    border-bottom-color: $border-color-ui;
   }
 
   .is-ods-select-flipped.is-ods-select-open &,
   [data-invalid] .is-ods-select-flipped.is-ods-select-open & {
     border-radius: 0 0 $base-border-radius $base-border-radius;
-    border-top-color: $base-border-color;
-    border-bottom-color: cv('action', 'base');
+    border-top-color: $border-color-ui;
+    border-bottom-color: $color-primary-base;
   }
 }
 
@@ -254,35 +265,35 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
 
   .ods-select--item {
     display: inline-block;
-    margin-right: 3.75px;
-    margin-bottom: 3.75px;
-    padding: 4px $small-spacing;
-    border: 1px solid darken(cv('action', 'base'), 5%);
-    border-radius: ($base-border-radius * 2);
-    background-color: cv('action', 'base');
-    color: $white;
-    font-size: ms(-1);
-    font-weight: 500;
+    margin-right: $spacing-xs;
+    margin-bottom: $spacing-xs;
+    padding: 0 $spacing-s;
+    border: 1px solid $color-primary-light;
+    border-radius: 1em;
+    background-color: cv('blue', '000');
+    color: $text-body;
+    font-size: $size-body-base;
+    font-weight: 400;
+    line-height: calc((#{$base-line-height} * 1em) - 2px); // Adjust for pill border
     word-break: break-all;
     vertical-align: middle;
 
     &[data-deletable] {
-      padding-right: 5px;
+      padding-right: $spacing-xs;
     }
 
     [dir='rtl'] & {
       margin-right: 0;
-      margin-left: 3.75px;
+      margin-left: $spacing-xs;
     }
 
     &.is-ods-select-highlighted {
-      border: 1px solid darken(cv('action', 'base'), 10%);
-      background-color: darken(cv('action', 'base'), 5%);
+      background-color: $color-primary-light;
     }
 
     .is-ods-select-disabled & {
-      border: 1px solid darken(cv('gray', '000'), 35%);
-      background-color: darken(cv('gray', '000'), 25%);
+      border: 1px solid $border-input-disabled;
+      background-color: $bg-input-disabled;
     }
   }
 }
@@ -294,7 +305,7 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   top: 100%;
   width: 100%;
   overflow: hidden;
-  border: 1px solid $base-border-color;
+  border: 1px solid $border-color-ui;
   border-top-width: 0;
   border-bottom-right-radius: $base-border-radius;
   border-bottom-left-radius: $base-border-radius;
@@ -307,12 +318,13 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   }
 
   .is-ods-select-focused & {
-    box-shadow: 0 0 0 4px fauxpacity(cv('action', 'base'));
+    @include outline($focus-ring-primary);
+
     clip-path: inset(0 -4px -4px -4px);
   }
 
   .is-ods-select-open & {
-    border-color: cv('action', 'base');
+    border-color: $color-primary-base;
   }
 
   .is-ods-select-flipped & {
@@ -337,8 +349,8 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
 
   .ods-select--item {
     position: relative;
-    padding: $small-spacing;
-    font-size: ms(0);
+    padding: $spacing-xs	$spacing-s;
+    font-size: $size-body-base;
 
     [dir='rtl'] & {
       text-align: right;
@@ -357,26 +369,26 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
         content: attr(data-select-text);
         position: absolute;
         top: 50%;
-        right: $small-spacing;
+        right: $spacing-s;
         transform: translateY(-50%);
         opacity: 0;
-        font-size: ms(-1);
+        font-size: $size-body-caption;
       }
 
       [dir='rtl'] & {
-        padding-right: $small-spacing;
+        padding-right: $spacing-s;
         padding-left: 100px;
         text-align: right;
 
         &::after {
           right: auto;
-          left: $small-spacing;
+          left: $spacing-s;
         }
       }
     }
 
     &.is-ods-select-highlighted {
-      background-color: cv('action', 'lightest');
+      background-color: cv('blue', '000');
 
       &::after {
         opacity: 0.5;
@@ -385,11 +397,11 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   }
 
   [data-invalid] .is-ods-select-focused & {
-    box-shadow: 0 0 0 4px fauxpacity(cv('danger', 'base'));
+    @include outline($focus-ring-danger);
   }
 
   [data-invalid] .is-ods-select-open & {
-    border-color: cv('danger', 'base');
+    border-color: $color-danger-base;
   }
 }
 
@@ -408,9 +420,9 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
 }
 
 .ods-select--heading {
-  padding: $small-spacing $small-spacing 0;
+  padding: $spacing-s $spacing-s 0;
   color: $text-sub;
-  font-size: ms(-1);
+  font-size: $size-body-caption;
   font-weight: 600;
 }
 
@@ -435,7 +447,6 @@ $choices-icon-cross-inverse: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEi
   border: 0;
   border-radius: 0;
   background-color: $white;
-  font-size: ms(0);
   vertical-align: baseline;
 
   &:focus {

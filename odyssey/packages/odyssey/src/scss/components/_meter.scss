@@ -12,61 +12,61 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-$meter-border-radius: $tiny-spacing/3;
-
 .ods-meter {
   // Reset the default appearance
   width: 100%;
-  height: $tiny-spacing;
+  height: $spacing-m; // match line-height of label
   border: 0;
-  border-radius: $meter-border-radius;
-  background: cv('gray', '100');
+  border-radius: $base-border-radius;
+  background: $border-color-display;
   box-shadow: none;
   appearance: meter;
 }
 
 //  WebKit
 .ods-meter::-webkit-meter-bar {
+  height: $spacing-m; // match line-height of label
   border: 0;
-  border-radius: $meter-border-radius;
-  background: cv('gray', '100');
+  border-radius: $base-border-radius;
+  background: $border-color-display;
   box-shadow: none;
 }
 
 .ods-meter::-webkit-meter-optimum-value,
 .ods-meter::-webkit-meter-suboptimum-value,
 .ods-meter::-webkit-meter-even-less-good-value {
-  border-radius: $meter-border-radius;
+  border-radius: $base-border-radius 0 0 $base-border-radius;
 }
 
 .ods-meter::-webkit-meter-optimum-value {
-  background: cv('success', 'base');
+  background: $color-success-base;
 }
 
 .ods-meter::-webkit-meter-suboptimum-value {
-  background: cv('caution', 'base');
+  background: $color-caution-base;
 }
 
 .ods-meter::-webkit-meter-even-less-good-value {
-  background: cv('danger', 'base');
+  background: $color-danger-base;
 }
 
 // Firefox
 .ods-meter::-moz-meter-bar {
+  height: $spacing-m; // match line-height of label
   border: 0;
-  border-radius: $meter-border-radius;
+  border-radius: $base-border-radius 0 0 $base-border-radius;
 }
 
 .ods-meter:-moz-meter-optimum::-moz-meter-bar {
-  background: cv('success', 'base');
+  background: $color-success-base;
 }
 
 .ods-meter:-moz-meter-sub-optimum::-moz-meter-bar {
-  background: cv('caution', 'base');
+  background: $color-caution-base;
 }
 
 .ods-meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-  background: cv('danger', 'base');
+  background: $color-danger-base;
 }
 
 .ods-meter--value {
@@ -81,28 +81,28 @@ $meter-border-radius: $tiny-spacing/3;
 .ods-meter--fallback {
   display: block;
   width: 100%;
-  height: $tiny-spacing;
-  margin-top: $small-spacing;
-  border-radius: $meter-border-radius;
-  background: cv('gray', '100');
+  height: $spacing-m; // match line-height of label
+  margin-top: $spacing-s;
+  border-radius: $base-border-radius;
+  background: $border-color-display;
 }
 
 .ods-meter--fallback > .ods-meter--fallback--value {
   display: block;
   height: inherit;
-  border-radius: $meter-border-radius;
+  border-radius: $base-border-radius;
   background-size: 100% 100%;
   text-indent: -9999px;
 }
 
 .ods-meter--optimum-value {
-  background: cv('success', 'base');
+  background: $color-success-base;
 }
 
 .ods-meter--suboptimum-value {
-  background: cv('caution', 'base');
+  background: $color-caution-base;
 }
 
 .ods-meter--subsuboptimum-value {
-  background: cv('danger', 'base');
+  background: $color-danger-base;
 }

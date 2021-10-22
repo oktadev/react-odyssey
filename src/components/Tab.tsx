@@ -207,4 +207,4 @@ Tabs.Panel = function TabsPanel ({ children, id, selected }) {
   );
 };
 
-export default Tabs;
+export { Tabs };

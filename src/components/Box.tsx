@@ -18,16 +18,16 @@ const BaseBox: FunctionComponent<BoxProps> = (props) => {
   const selectorTitle = heading.replace(/\s+/g, '-').toLowerCase();
   const dataSe = restProps['data-se']
     ? restProps['data-se']
-    : `${selectorTitle}-card`;
+    : `${selectorTitle}-box`;
   return (
-    <div {...restProps} className="card" data-se={dataSe}>
-      <div className={classNames('card--header')}>
-        <div data-se="card--title" className={classNames('card--title', { loading })}>
+    <div {...restProps} className="box" data-se={dataSe}>
+      <div className={classNames('box--header')}>
+        <div data-se="box--title" className={classNames('box--title', { loading })}>
           {heading}
         </div>
-        <div data-se="card--action">{action}</div>
+        <div data-se="box--action">{action}</div>
       </div>
-      <div className={classNames('card--main')}>{children}</div>
+      <div className={classNames('box--main')}>{children}</div>
     </div>
   );
 };

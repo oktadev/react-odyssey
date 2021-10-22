@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tabs from '../components/Tab';
+import { Tabs } from '../components/Tab';
 
 export default <Tabs id="example-tabs" selectedId="tab-2" ariaLabel="Describes the purpose of the tabs.">
   <Tabs.Panel id="tab-1" label="Tab One">TabPanel One Content</Tabs.Panel>

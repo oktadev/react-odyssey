@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "classnames": "2.x",
-    "node-sass": "^4.14.0",
+    "node-sass": "^6.0.0",
     "prop-types": "15.x",
     "react": "16.x",
     "react-dom": "16.x",
@@ -43,7 +43,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "react-cosmos": "^5.2.1",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^10.0.0",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "2.x",
     "typescript": "3.x",
